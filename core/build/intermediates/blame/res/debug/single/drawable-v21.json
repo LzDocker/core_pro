@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "/Users/zhangxindang/bf_workspace/corepro/core/build/intermediates/res/merged/debug/drawable-v21/abc_action_bar_item_background_material.xml",
+        "source": "/Users/zhangxindang/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/743abe37372eb6850b2f435294bcfddf/res/drawable-v21/abc_action_bar_item_background_material.xml"
+    },
+    {
+        "merged": "/Users/zhangxindang/bf_workspace/corepro/core/build/intermediates/res/merged/debug/drawable-v21/abc_edit_text_material.xml",
+        "source": "/Users/zhangxindang/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/743abe37372eb6850b2f435294bcfddf/res/drawable-v21/abc_edit_text_material.xml"
+    },
+    {
+        "merged": "/Users/zhangxindang/bf_workspace/corepro/core/build/intermediates/res/merged/debug/drawable-v21/notification_action_background.xml",
+        "source": "/Users/zhangxindang/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/44d606cfaa81b752e8cbbf9021dcd494/res/drawable-v21/notification_action_background.xml"
+    },
+    {
+        "merged": "/Users/zhangxindang/bf_workspace/corepro/core/build/intermediates/res/merged/debug/drawable-v21/abc_btn_colored_material.xml",
+        "source": "/Users/zhangxindang/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/743abe37372eb6850b2f435294bcfddf/res/drawable-v21/abc_btn_colored_material.xml"
+    }
+]

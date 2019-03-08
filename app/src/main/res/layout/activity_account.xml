@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="Vo"
+            type="com.docker.corepro.vo.RegisterVo" />
+
+    </data>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="20dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/iv_icon"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginBottom="30dp"
+            android:onClick="click"
+            android:src="@color/colorPrimary" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|right"
+                android:text="用    户    名：" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:hint="请输入用户名"
+                android:text="@={Vo.username}"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|right"
+                android:text="密            码：" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:hint="请输入密码"
+                android:text="@={Vo.password}"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_ver_coutainer"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|right"
+                android:text="确 认 密 码：" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:hint="请再次输入密码"
+                android:text="@={Vo.repassword}"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/tv_register"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="40dp"
+            android:background="@color/colorPrimary"
+            android:gravity="center"
+            android:text="注册"
+            android:textColor="#fff" />
+
+        <TextView
+            android:id="@+id/tv_login"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/colorPrimary"
+            android:gravity="center"
+            android:text="已经注册去登录 "
+            android:textColor="#fff" />
+
+    </LinearLayout>
+
+    <!--<com.docker.common.widget.EmptyLayout-->
+        <!--android:id="@+id/empty"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent">-->
+
+    <!--</com.docker.common.widget.EmptyLayout>-->
+
+
+</layout>
