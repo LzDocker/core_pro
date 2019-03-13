@@ -4,6 +4,7 @@ package com.docker.corepro.di;
 
 
 import com.docker.corepro.api.AccountService;
+import com.docker.corepro.api.CommonService;
 
 import javax.inject.Singleton;
 
@@ -21,5 +22,12 @@ public class ServiceModule {
     @Provides
     AccountService provideUserInfoService(Retrofit retrofit) {
         return retrofit.create(AccountService.class);
+    }
+
+
+    @Singleton
+    @Provides
+    CommonService provideCommonService(Retrofit retrofit) {
+        return retrofit.create(CommonService.class);
     }
 }

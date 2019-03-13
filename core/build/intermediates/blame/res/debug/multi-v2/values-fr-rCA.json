@@ -4,7 +4,7 @@
             "outputFile": "/Users/zhangxindang/bf_workspace/corepro/core/build/intermediates/incremental/mergeDebugResources/merged.dir/values-fr-rCA/values-fr-rCA.xml",
             "map": [
                 {
-                    "source": "/Users/zhangxindang/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/743abe37372eb6850b2f435294bcfddf/res/values-fr-rCA/values-fr-rCA.xml",
+                    "source": "/Users/zhangxindang/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/128bc86f16cae15b7726af07548ba9e0/res/values-fr-rCA/values-fr-rCA.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -19,7 +19,7 @@
             "outputFile": "/Users/zhangxindang/bf_workspace/corepro/core/build/intermediates/res/merged/debug/values-fr-rCA/values-fr-rCA.xml",
             "map": [
                 {
-                    "source": "/Users/zhangxindang/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/743abe37372eb6850b2f435294bcfddf/res/values-fr-rCA/values-fr-rCA.xml",
+                    "source": "/Users/zhangxindang/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/128bc86f16cae15b7726af07548ba9e0/res/values-fr-rCA/values-fr-rCA.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",

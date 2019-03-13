@@ -11,12 +11,17 @@ import okio.Source;
 
 public class ProgressResponseBody extends ResponseBody {
     private final ResponseBody responseBody;
-    private final ProgressListener listener;
+    private  ProgressListener listener;
+    private  ProgressListen listen;
     private BufferedSource bufferedSource;
 
     public ProgressResponseBody(ResponseBody responseBody, ProgressListener listener) {
         this.responseBody = responseBody;
         this.listener = listener;
+    }
+    public ProgressResponseBody(ResponseBody responseBody, ProgressListen listener) {
+        this.responseBody = responseBody;
+        this.listen = listener;
     }
 
     @Override
@@ -44,7 +49,12 @@ public class ProgressResponseBody extends ResponseBody {
             public long read(Buffer sink, long byteCount) throws IOException {
                 long bytesRead = super.read(sink, byteCount);
                 totalBytesRead += bytesRead != -1 ? bytesRead : 0;
-                listener.onProgress(totalBytesRead, responseBody.contentLength(), bytesRead == -1);
+                if(listener!=null){
+                    listener.onProgress(totalBytesRead, responseBody.contentLength(), bytesRead == -1);
+                }
+                if(listen!=null){
+                    listen.onProgress(totalBytesRead, responseBody.contentLength(), bytesRead == -1);
+                }
                 return bytesRead;
             }
         };

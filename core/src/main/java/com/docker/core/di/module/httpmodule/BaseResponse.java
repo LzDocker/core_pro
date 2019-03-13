@@ -6,33 +6,33 @@ import java.io.Serializable;
  * Created by zhangxindang on 2018/9/6.
  */
 
-public class BaseResponse <T> implements Serializable {
+public class BaseResponse<T> implements Serializable {
 
-    private T data;
-    private String errorCode;
-    private String errorMsg;
+    private T rst;
+    private String errno;
+    private String errmsg;
 
-    public T getData() {
-        return data;
+    public T getRst() {
+        return rst;
     }
 
-    public void setData(T data) {
-        this.data = data;
+    public void setRst(T rst) {
+        this.rst = rst;
     }
 
-    public String getErrorCode() {
-        return errorCode;
+    public String getErrno() {
+        return errno;
     }
 
-    public void setErrorCode(String errorCode) {
-        this.errorCode = errorCode;
+    public void setErrno(String errno) {
+        this.errno = errno;
     }
 
-    public String getErrorMsg() {
-        return errorMsg;
+    public String getErrmsg() {
+        return errmsg;
     }
 
-    public void setErrorMsg(String errorMsg) {
-        this.errorMsg = errorMsg;
+    public void setErrmsg(String errmsg) {
+        this.errmsg = errmsg;
     }
 }

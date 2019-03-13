@@ -1,6 +1,7 @@
 package com.docker.core.base;
 
 import android.app.Activity;
+import android.content.Context;
 import android.support.v4.app.Fragment;
 
 import com.alibaba.android.arouter.launcher.ARouter;
@@ -23,9 +24,15 @@ public class BaseInjectFragment extends Fragment {
         return false;
     }
 
+//    @Override
+//    public void onAttach(Activity activity) {
+//
+//        super.onAttach(activity);
+//    }
+
     @Override
-    public void onAttach(Activity activity) {
+    public void onAttach(Context context) {
         inject();
-        super.onAttach(activity);
+        super.onAttach(context);
     }
 }

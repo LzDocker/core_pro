@@ -320,6 +320,4 @@
         <item name="android:textColor">@color/secondary_text_default_material_light</item>
         <item name="android:textSize">@dimen/notification_action_text_size</item>
     </style>
-    <style name="leak_canary_LeakCanary.Base" parent="android:Theme.Material">
-  </style>
 </resources>

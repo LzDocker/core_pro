@@ -46,9 +46,9 @@ public abstract class NetworkBoundResource<ResultType, RequestType> {
             result.removeSource(dbSource);
             //noinspection ConstantConditions
             if (response.isSuccessful()) {
-                if ("-1".equals(response.body.getErrorCode())) { // bussiness error
+                if ("-1".equals(response.body.getErrno())) { // bussiness error
                     result.addSource(dbSource,
-                            newData -> setZoneValue(Resource.error(response.body.getErrorMsg(), newData)));
+                            newData -> setZoneValue(Resource.error(response.body.getErrmsg(), newData)));
                 } else {
                     appExecutors.diskIO().execute(() -> {
                         saveCallResult(processResponse(response));
@@ -87,7 +87,7 @@ public abstract class NetworkBoundResource<ResultType, RequestType> {
 
     @WorkerThread
     protected RequestType processResponse(ApiResponse<BaseResponse<RequestType>> response) {
-        return response.body.getData();
+        return response.body.getRst();
     }
 
     @WorkerThread

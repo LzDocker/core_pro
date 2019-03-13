@@ -16,19 +16,25 @@ import android.widget.Toast;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.blankj.utilcode.util.AppUtils;
+import com.blankj.utilcode.util.SPUtils;
+import com.docker.commonwidget.changeenvirmonent.EnvironmentManager;
 import com.docker.core.base.BaseActivity;
 import com.docker.core.di.module.httpmodule.MHeader;
-import com.docker.core.di.module.httpmodule.progress.ProgressListener;
+import com.docker.core.di.module.httpmodule.progress.ProgressListen;
 import com.docker.core.di.module.httpmodule.progress.ProgressManager;
 import com.docker.core.repository.Resource;
 import com.docker.core.util.AppExecutors;
-import com.docker.core.util.SpTool;
 import com.docker.corepro.R;
-import com.docker.corepro.api.AccountService;
+import com.docker.corepro.api.CommonService;
+import com.docker.corepro.api.ServiceConfig;
 import com.docker.corepro.databinding.ActivityAccountBinding;
 import com.docker.corepro.viewmodel.AccountViewModel;
 import com.docker.corepro.vo.LoginVo;
 import com.docker.corepro.vo.RegisterVo;
+import com.docker.updatelibary.versioncontroler.VersionManager;
+import com.luck.picture.lib.PictureSelector;
+import com.luck.picture.lib.config.PictureConfig;
+import com.luck.picture.lib.config.PictureMimeType;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import java.util.Map;
@@ -43,7 +49,7 @@ import io.reactivex.functions.Consumer;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
-import retrofit2.Retrofit;
+import retrofit2.Response;
 
 public class AccountActivity extends BaseActivity<AccountViewModel, ActivityAccountBinding> {
 
@@ -60,6 +66,15 @@ public class AccountActivity extends BaseActivity<AccountViewModel, ActivityAcco
     @Inject
     ProgressManager progressManager;
 
+    @Inject
+    VersionManager versionManager;
+
+    @Inject
+    CommonService commonService;
+
+    @Inject
+    EnvironmentManager environmentManager;
+
 
     private static final int RegisterFlag = 1001;
     private static final int LoginFlag = 1002;
@@ -67,8 +82,22 @@ public class AccountActivity extends BaseActivity<AccountViewModel, ActivityAcco
     private RegisterVo registerVo;
 
     public void click(View view) {
-        mHeader.setServerUrl("http://www.baidu.com/");
+
+        Intent intent = new Intent(AccountActivity.this,SimpleActivity.class);
+        startActivity(intent);
+//        testpickImage();
+//        initUpdate();
+//        bottomSheetDialog bottomSheetDialog = new bottomSheetDialog();
+//        bottomSheetDialog.setDataCallback(new String[]{"111", "222"}, new bottomSheetDialog.ChooseCallback() {
+//            @Override
+//            public void onClickOptions(int position) {
+//                bottomSheetDialog.dismiss();
+//            }
+//        });
+//       bottomSheetDialog.show(this);
+//        environmentManager.selectEnvironment();
     }
+
 
     @Override
     protected int getLayoutId() {
@@ -90,9 +119,13 @@ public class AccountActivity extends BaseActivity<AccountViewModel, ActivityAcco
     public void onCreate(Bundle savedInstanceState) {
 //        isOverrideContentView = true;
         super.onCreate(savedInstanceState);
+
+        mHeader.setServerUrl(ServiceConfig.SERVER_URL_PRO);
+//        initUpdate();
         initview();
-         mToolbar.setTitle("登录");
-         mToolbar.setNavigation(false);
+        initEnviron();
+        mToolbar.setTitle("登录");
+        mToolbar.setNavigation(false);
 
 
         progressMld.observe(this, new Observer<Integer>() {
@@ -105,11 +138,21 @@ public class AccountActivity extends BaseActivity<AccountViewModel, ActivityAcco
 //        mBinding.empty.showLoading();
 //        mBinding.empty.showError();
 //        mBinding.empty.showNoData();
-//    s
     }
 
+    private void initEnviron() {
+        environmentManager.bind(this, this, new String[]{"测试", "线上"}, new String[]{ServiceConfig.SERVER_URL_TEST, ServiceConfig.SERVER_URL_PRO}, ServiceConfig.SERVER_URL_PRO);
+
+    }
+
+    private void initUpdate() {
+        this.getLifecycle().addObserver(versionManager.Bind(this, this, mViewModel.checkUpdate(), VersionManager.TYPE_NOTIFYACTION));
+    }
+
+
     private void initview() {
-        boolean islogin = (boolean) SpTool.get(this, "LOGIN_FLAG", false);
+//        boolean islogin = (boolean) SpTool.get(this, "LOGIN_FLAG", false);
+        boolean islogin = (boolean) SPUtils.getInstance("eee").getBoolean( "LOGIN_FLAG",false);
         if (islogin) {
             toHome(null);
             finish();
@@ -140,7 +183,7 @@ public class AccountActivity extends BaseActivity<AccountViewModel, ActivityAcco
         mViewModel.loginlv.observe(this, new Observer<Resource<LoginVo>>() {
             @Override
             public void onChanged(@Nullable Resource<LoginVo> loginVoResource) {
-                showToast(loginVoResource.status.name());
+//                showToast(loginVoResource.status.name());
 
             }
         });
@@ -176,7 +219,7 @@ public class AccountActivity extends BaseActivity<AccountViewModel, ActivityAcco
         mViewModel.register(registerVo).observe(this, new Observer<Resource<LoginVo>>() {
             @Override
             public void onChanged(@Nullable Resource<LoginVo> loginVoResource) {
-                showToast(loginVoResource.status.name());
+//                showToast(loginVoResource.status.name());
             }
         });
 //        mViewModel.registVo.observe(this, );
@@ -187,15 +230,15 @@ public class AccountActivity extends BaseActivity<AccountViewModel, ActivityAcco
 //        chechParam();
 //        mViewModel.Login(registerVo.getUsername(), registerVo.getPassword());
 
-        RxPermissions rxPermissions=new RxPermissions(this);
-        rxPermissions.request(Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.INTERNET).subscribe(new Consumer<Boolean>() {
+        RxPermissions rxPermissions = new RxPermissions(this);
+        rxPermissions.request(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.INTERNET).subscribe(new Consumer<Boolean>() {
             @Override
             public void accept(Boolean aBoolean) throws Exception {
-                if (aBoolean){
+                if (aBoolean) {
                     //申请的权限全部允许
                     Toast.makeText(AccountActivity.this, "允许了权限!", Toast.LENGTH_SHORT).show();
                     download();
-                }else{
+                } else {
                     //只要有一个权限被拒绝，就会执行
                     Toast.makeText(AccountActivity.this, "未授权权限，部分功能不能使用", Toast.LENGTH_SHORT).show();
                 }
@@ -255,11 +298,43 @@ public class AccountActivity extends BaseActivity<AccountViewModel, ActivityAcco
     // 测试下载文件
     private void download() {
 
-        progressManager.progressDownLoad("qq.apk", new ProgressListener() {
+//        progressManager.progressDownLoad("qq.apk", new ProgressListener() {
+//            @Override
+//            public Call onProcessDownLoadMethod(Retrofit retrofit) {
+//                downCall = retrofit.create(AccountService.class).downApk("http://116.117.158.129/f2.market.xiaomi.com/download/AppStore/04275951df2d94fee0a8210a3b51ae624cc34483a/com.tencent.mm.apk");
+//                return downCall;
+//            }
+//
+//            @Override
+//            public Call onProcessUploadMethod(Map<String, RequestBody> params) {
+//                return null;
+//            }
+//
+//            @Override
+//            public void onFailure(Call<ResponseBody> call, Throwable t) {
+//                mBinding.tvRegister.setText("onFailure");
+//            }
+//
+//            @Override
+//            public void onProgress(long progress, long total, boolean done) {
+//                double aa = (progress * 1.0 / total * 100);
+//                Log.d("sss", "progress: ------------------" + aa + "------------");
+//                progressMld.postValue(new Double(aa).intValue());
+//            }
+//
+//            @Override
+//            public void onComplete(retrofit2.Response<ResponseBody> response) {
+//                Log.d("sss", "onComplete: ------------------");
+//                mBinding.tvRegister.setText("onComplete");
+//                AppUtils.installApp(Environment.getExternalStorageDirectory()+"/qq.apk");
+//            }
+//        });
+
+
+        progressManager.download(Environment.getExternalStorageDirectory().getPath(), "qq.apk", "http://116.117.158.129/f2.market.xiaomi.com/download/AppStore/04275951df2d94fee0a8210a3b51ae624cc34483a/com.tencent.mm.apk", new ProgressListen() {
             @Override
-            public Call onProcessDownLoadMethod(Retrofit retrofit) {
-                downCall = retrofit.create(AccountService.class).downApk();
-                return downCall;
+            public void ondownloadStart(Call call) {
+                downCall = call;
             }
 
             @Override
@@ -280,15 +355,13 @@ public class AccountActivity extends BaseActivity<AccountViewModel, ActivityAcco
             }
 
             @Override
-            public void onComplete(retrofit2.Response<ResponseBody> response) {
-                Log.d("sss", "onComplete: ------------------");
+            public void onComplete(Response<ResponseBody> response) {
                 mBinding.tvRegister.setText("onComplete");
-                AppUtils.installApp(Environment.getExternalStorageDirectory()+"/qq.apk");
+                AppUtils.installApp(Environment.getExternalStorageDirectory() + "/qq.apk");
             }
         });
 
     }
-
 
 
     @Override
@@ -297,5 +370,45 @@ public class AccountActivity extends BaseActivity<AccountViewModel, ActivityAcco
         if (downCall != null) {
             downCall.cancel();
         }
+    }
+
+
+    private void testpickImage(){
+        // 进入相册 以下是例子：不需要的api可以不写
+        PictureSelector.create(this)
+                .openGallery(PictureMimeType.ofAll())// 全部.PictureMimeType.ofAll()、图片.ofImage()、视频.ofVideo()、音频.ofAudio()
+                .theme(R.style.picture_QQ_style)// 主题样式设置 具体参考 values/styles   用法：R.style.picture.white.style
+                .maxSelectNum(9)// 最大图片选择数量
+                .minSelectNum(1)// 最小选择数量
+                .imageSpanCount(3)// 每行显示个数
+                .selectionMode(PictureConfig.MULTIPLE)// 多选 or 单选
+                .previewImage(true)// 是否可预览图片
+                .previewVideo(true)// 是否可预览视频
+                .enablePreviewAudio(false) // 是否可播放音频
+                .isCamera(true)// 是否显示拍照按钮
+                .isZoomAnim(true)// 图片列表点击 缩放效果 默认true
+                //.imageFormat(PictureMimeType.PNG)// 拍照保存图片格式后缀,默认jpeg
+                //.setOutputCameraPath("/CustomPath")// 自定义拍照保存路径
+                .enableCrop(false)// 是否裁剪
+                .compress(true)// 是否压缩
+                .synOrAsy(true)//同步true或异步false 压缩 默认同步
+                //.compressSavePath(getPath())//压缩图片保存地址
+                //.sizeMultiplier(0.5f)// glide 加载图片大小 0~1之间 如设置 .glideOverride()无效
+                .glideOverride(160, 160)// glide 加载宽高，越小图片列表越流畅，但会影响列表图片浏览的清晰度
+                .isGif(true)// 是否显示gif图片
+//                .selectionMedia(selectList)// 是否传入已选图片
+//                        .videoMaxSecond(15)
+//                        .videoMinSecond(10)
+                //.previewEggs(false)// 预览图片时 是否增强左右滑动图片体验(图片滑动一半即可看到上一张是否选中)
+                //.cropCompressQuality(90)// 裁剪压缩质量 默认100
+                .minimumCompressSize(100)// 小于100kb的图片不压缩
+                //.cropWH()// 裁剪宽高比，设置如果大于图片本身宽高则无效
+                //.rotateEnabled() // 裁剪是否可旋转图片
+                //.scaleEnabled()// 裁剪是否可放大缩小图片
+                //.videoQuality()// 视频录制质量 0 or 1
+                //.videoSecond()
+                .videoMaxSecond(300)//显示多少秒以内的视频or音频也可适用
+                .recordVideoSecond(10)//录制视频秒数 默认60s
+                .forResult(PictureConfig.CHOOSE_REQUEST);//结果回调onActivityResult code
     }
 }

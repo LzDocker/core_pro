@@ -5,8 +5,10 @@ import com.docker.core.base.BaseApplication;
 import com.docker.core.di.module.AppModule;
 import com.docker.core.di.module.BaseVmModule;
 import com.docker.core.di.module.cachemodule.CacheModule;
+import com.docker.core.di.module.httpmodule.CommonServiceModule;
 import com.docker.core.di.module.httpmodule.GlobalConfigModule;
 import com.docker.core.di.module.httpmodule.HttpClientModule;
+import com.docker.updatelibary.versioncontroler.UpdateServiceMoudle;
 import com.google.gson.Gson;
 
 import javax.inject.Singleton;
@@ -27,6 +29,8 @@ import okhttp3.OkHttpClient;
         HttpClientModule.class,
         GlobalConfigModule.class,
         ServiceModule.class,
+        CommonServiceModule.class,
+        UpdateServiceMoudle.class,
         CacheModule.class,
 
         BaseVmModule.class,

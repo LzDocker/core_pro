@@ -7,10 +7,6 @@ buildscript {
         google()
         jcenter()
         maven { url 'https://maven.google.com' }
-        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
-        maven { url "https://jitpack.io" }
-        maven { url "https://maven.google.com" }
-        mavenCentral()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.0.0'
@@ -23,9 +19,13 @@ buildscript {
 
 allprojects {
     repositories {
-        google()
         jcenter()
+        google()
         maven { url 'https://maven.google.com' }
+        maven(){url 'http://127.0.0.1:8081/repository/common/'}
+        maven(){url 'http://127.0.0.1:8081/repository/Core/'}
+        maven(){url 'http://127.0.0.1:8081/repository/ucrop/'}
+        maven(){url 'http://127.0.0.1:8081/repository/commonwidget/'}
         mavenCentral()
     }
 }

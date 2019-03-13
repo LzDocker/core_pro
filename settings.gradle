@@ -1,1 +1,1 @@
-include ':app', ':core'
+include ':app', ':core', ':common', ':updatelibary', ':imagepicker', ':commonwidget', ':picture_library', ':ucrop', ':refresh-layout'

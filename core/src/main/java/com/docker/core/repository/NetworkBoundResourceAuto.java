@@ -61,14 +61,14 @@ public abstract class NetworkBoundResourceAuto<ResultType> {
         result.addSource(apiResponse, response -> {
             result.removeSource(apiResponse);
             if (response.isSuccessful()&&response.body!=null) {
-                if (response!=null &&response.body.getErrorCode()!=null&&"-1".equals(response.body.getErrorCode())) { // bussiness error
+                if (response!=null &&response.body.getErrno()!=null&&Integer.parseInt(response.body.getErrno())<0) { // bussiness error
                     result.addSource(apiResponse,
                             newData -> {
                                 result.removeSource(apiResponse);
-                                setZoneValue(Resource.bussinessError(response.body.getErrorMsg(), null));
+                                setZoneValue(Resource.bussinessError(response.body.getErrmsg(), null));
                             });
                 } else {
-                    setZoneValue(Resource.success((ResultType) response.body.getData()));
+                    setZoneValue(Resource.success((ResultType) response.body.getRst()));
                 }
             } else {
                 onFetchFailed();
@@ -152,14 +152,14 @@ public abstract class NetworkBoundResourceAuto<ResultType> {
 
         switch (cacheStrategy) {
             case IF_NONE_CACHE_REQUEST:
-                setZoneValue(Resource.success((ResultType) newdata.body.getData()));
+                setZoneValue(Resource.success((ResultType) newdata.body.getRst()));
                 break;
             case FIRST_CACHE_THEN_REQUEST:
-                setZoneValue(Resource.loading(null,(ResultType) newdata.body.getData()));
+                setZoneValue(Resource.loading(null,(ResultType) newdata.body.getRst()));
                 fetchFromNetwork();
                 break;
             case REQUEST_FAILED_READ_CACHE:
-                setZoneValue(Resource.success((ResultType) newdata.body.getData()));
+                setZoneValue(Resource.success((ResultType) newdata.body.getRst()));
                 break;
         }
 
@@ -171,7 +171,7 @@ public abstract class NetworkBoundResourceAuto<ResultType> {
         result.addSource(apiResponse, response -> {
             result.removeSource(apiResponse);
             if (response.isSuccessful()) {
-                if ("-1".equals(response.body.getErrorCode())) { // bussiness error
+                if (Integer.parseInt(response.body.getErrno())<0) { // bussiness error
                     onFetchNetFailed(0, response);
                 } else {
                     appExecutors.diskIO().execute(() -> {
@@ -206,14 +206,14 @@ public abstract class NetworkBoundResourceAuto<ResultType> {
                 if (errType == 1) {
                     setZoneValue(Resource.error(newdata.errorMessage, null));
                 } else {
-                    setZoneValue(Resource.bussinessError(newdata.body.getErrorMsg(), null));
+                    setZoneValue(Resource.bussinessError(newdata.body.getErrmsg(), null));
                 }
                 break;
             case FIRST_CACHE_THEN_REQUEST:
                 if (errType == 1) {
                     setZoneValue(Resource.error(newdata.errorMessage, null));
                 } else {
-                    setZoneValue(Resource.bussinessError(newdata.body.getErrorMsg(), null));
+                    setZoneValue(Resource.bussinessError(newdata.body.getErrmsg(), null));
                 }
 
                 break;
@@ -221,7 +221,7 @@ public abstract class NetworkBoundResourceAuto<ResultType> {
                 if (errType == 1) {
                     setZoneValue(Resource.loading(newdata.errorMessage, null));
                 } else {
-                    setZoneValue(Resource.loading(newdata.body.getErrorMsg(), null));
+                    setZoneValue(Resource.loading(newdata.body.getErrmsg(), null));
                 }
                fetchFromdb();
                 break;
@@ -235,21 +235,21 @@ public abstract class NetworkBoundResourceAuto<ResultType> {
         switch (cacheStrategy) {
             case IF_NONE_CACHE_REQUEST:
                 if (newdata != null) {
-                    setZoneValue(Resource.success((ResultType) newdata.body.getData()));
+                    setZoneValue(Resource.success((ResultType) newdata.body.getRst()));
                 } else {
                     setZoneValue(Resource.success(null));
                 }
                 break;
             case FIRST_CACHE_THEN_REQUEST:
                 if (newdata != null) {
-                    setZoneValue(Resource.success((ResultType) newdata.body.getData()));
+                    setZoneValue(Resource.success((ResultType) newdata.body.getRst()));
                 } else {
                     setZoneValue(Resource.success(null));
                 }
                 break;
             case REQUEST_FAILED_READ_CACHE:
                 if (newdata != null) {
-                    setZoneValue(Resource.success((ResultType) newdata.body.getData()));
+                    setZoneValue(Resource.success((ResultType) newdata.body.getRst()));
                 } else {
                     setZoneValue(Resource.success(null));
                 }

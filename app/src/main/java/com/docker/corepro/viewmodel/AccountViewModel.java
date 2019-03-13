@@ -12,6 +12,7 @@ import com.docker.corepro.repository.AccountRepository;
 import com.docker.corepro.vo.LoginParam;
 import com.docker.corepro.vo.LoginVo;
 import com.docker.corepro.vo.RegisterVo;
+import com.docker.updatelibary.vo.UpdateInfo;
 
 import javax.inject.Inject;
 
@@ -69,5 +70,14 @@ public class AccountViewModel extends BaseViewModel {
             return accountRepository.registe(input.getUsername(), input.getPassword(), input.getRepassword());
         }
     });
+
+    /*
+    *
+    * 更新
+    * */
+    public final LiveData<Resource<UpdateInfo>> checkUpdate(){
+        return accountRepository.checkUpData();
+    }
+
 
 }

@@ -1,27 +1,22 @@
 package com.docker.core.base;
 
+import android.content.Context;
 import android.content.res.Configuration;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.LinearLayout;
 
 import com.docker.core.R;
 import com.docker.core.util.Empty;
-import com.docker.core.util.SpTool;
-import com.docker.core.util.ToastTool;
 import com.docker.core.widget.ToolBar;
-import com.gyf.barlibrary.BarHide;
 import com.gyf.barlibrary.ImmersionBar;
-import com.gyf.barlibrary.OnKeyboardListener;
 
 import javax.inject.Inject;
 
@@ -37,7 +32,7 @@ public abstract class BaseActivity<VM extends BaseViewModel, VB extends ViewData
     public abstract VM getViewModel();
     @Inject
     Empty empty;
-
+    private InputMethodManager mInputMethodManager;
 
     /*
      *  是否要覆盖父布局
@@ -65,16 +60,18 @@ public abstract class BaseActivity<VM extends BaseViewModel, VB extends ViewData
                 rootView.addView(this.getLayoutInflater().inflate(this.getLayoutId(), (ViewGroup) null));
             }
         }
-        initStatesBar();
+        if(isImmersionBarEnabled()){
+            initImmersionBar();
+        }
         mViewModel = getViewModel();
         getLifecycle().addObserver(mViewModel);
     }
 
     /*
      *
-     * 初始化状态栏  当状态栏为白色时 修改状态栏文字颜色
+     * 初始化状态栏  默认是白色黑字
      * */
-    protected void initStatesBar() {
+    protected void initImmersionBar() {
         ImmersionBar.with(this).init();
         ImmersionBar.with(this)
                 .fitsSystemWindows(true)  //使用该属性,必须指定状态栏颜色
@@ -91,11 +88,50 @@ public abstract class BaseActivity<VM extends BaseViewModel, VB extends ViewData
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        ImmersionBar.with(this).destroy();
+        if(isImmersionBarEnabled()){
+            ImmersionBar.with(this).destroy();
+        }
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        hideSoftKeyBoard();
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        if (isImmersionBarEnabled()) {
+            // 非必加
+            // 如果你的app可以横竖屏切换，适配了4.4或者华为emui3.1系统手机，并且navigationBarWithKitkatEnable为true，
+            // 请务必在onConfigurationChanged方法里添加如下代码（同时满足这三个条件才需要加上代码哦：1、横竖屏可以切换；2、android4.4或者华为emui3.1系统手机；3、navigationBarWithKitkatEnable为true）
+            // 否则请忽略
+            ImmersionBar.with(this).init();
+        }
+    }
+
+    public void hideSoftKeyBoard() {
+        View localView = getCurrentFocus();
+        if (this.mInputMethodManager == null) {
+            this.mInputMethodManager = ((InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE));
+        }
+        if ((localView != null) && (this.mInputMethodManager != null)) {
+            this.mInputMethodManager.hideSoftInputFromWindow(localView.getWindowToken(), 2);
+        }
     }
 
     protected View getToolBar() {
         return this.getLayoutInflater().inflate(R.layout.toolbar, (ViewGroup) null);
+    }
+    /**
+     * 是否可以使用沉浸式
+     * Is immersion bar enabled boolean.
+     *
+     * @return the boolean
+     */
+    protected boolean isImmersionBarEnabled() {
+        return true;
     }
 
     public ToolBar getToolbar() {
@@ -131,13 +167,6 @@ public abstract class BaseActivity<VM extends BaseViewModel, VB extends ViewData
 
     }
 
-    protected void showToast(String content) {
-        ToastTool.show(this.getApplicationContext(), content);
-    }
-
-    protected void spSqve(String key, Object object) {
-        SpTool.save(this, key, object);
-    }
 
 
 }

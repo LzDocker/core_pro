@@ -32,7 +32,6 @@ public interface BaseAppComponent {
 
     Gson gson();
 
-
     OkHttpClient okHttpClient();
 
     BaseApplication baseApplication();

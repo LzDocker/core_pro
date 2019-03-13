@@ -1,6 +1,6 @@
 package com.docker.core.base;
 
-import android.app.Activity;
+import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.os.Bundle;
@@ -13,7 +13,6 @@ import android.widget.RelativeLayout;
 
 import com.docker.core.R;
 import com.docker.core.util.AutoClearedValue;
-import com.docker.core.util.ToastTool;
 
 /**
  * Created by zhangxindang on 2018/8/31.
@@ -53,14 +52,10 @@ public abstract class BaseFragment<VM extends BaseViewModel, VB extends ViewData
     }
 
     @Override
-    public void onAttach(Activity activity) {
+    public void onAttach(Context activity) {
         super.onAttach(activity);
         this.mViewModel = this.getViewModel();
         this.getLifecycle().addObserver(this.mViewModel);
-    }
-
-    protected void showToast(String content) {
-        ToastTool.show(this.getActivity(), content);
     }
 
     protected BaseActivity getHoldingActivity() {

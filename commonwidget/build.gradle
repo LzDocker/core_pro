@@ -1,0 +1,78 @@
+apply plugin: 'com.android.library'
+apply plugin: 'maven'
+
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
+    defaultConfig {
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+//    lintOptions {
+//        // 如果为 true，则当lint发现错误时停止 gradle构建
+//        abortOnError false
+//    }
+    sourceSets {
+        main {
+            resources.srcDirs = ['src/main/resources', 'src/main/resources/']
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    dataBinding {
+        enabled = true
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+        exclude module: 'jsr305'
+    })
+    testImplementation rootProject.ext.dependencies["junit"]
+
+//    api rootProject.ext.dependencies["SmartRefreshLayout"]
+    api rootProject.ext.dependencies["xrecyclerview"]
+
+    annotationProcessor rootProject.ext.dependencies["room-compiler"]
+    annotationProcessor rootProject.ext.dependencies["dagger-android-processor"]
+    annotationProcessor rootProject.ext.dependencies["dagger-compiler"]
+    annotationProcessor rootProject.ext.dependencies["dagger-android-compiler"]
+    api project(":core")
+    api project(":refresh-layout")
+//    api 'com.docker.core:core:1.0.1'
+
+}
+uploadArchives {
+    configuration = configurations.archives
+    repositories {
+        mavenDeployer {
+            repository(url: 'http://127.0.0.1:8081/repository/commonwidget/') {
+                //你Nexus的账户密码
+                authentication(userName: 'admin', password: 'admin123')
+            }
+            pom.project {
+                version '1.0.0'
+                artifactId 'commonwidget'
+                groupId 'com.docker.commonwidget'
+                packaging 'aar'
+                description '通用view'
+            }
+        }
+    }
+
+}

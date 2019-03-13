@@ -5,6 +5,7 @@ import android.arch.lifecycle.ViewModel;
 
 import com.docker.core.di.scope.ViewModelKey;
 import com.docker.corepro.viewmodel.AccountViewModel;
+import com.docker.corepro.viewmodel.SimpleViewModel;
 
 import dagger.Binds;
 import dagger.Module;
@@ -21,6 +22,11 @@ public abstract class ViewModelModule {
     @ViewModelKey(AccountViewModel.class)
     abstract ViewModel AccountViewModel(AccountViewModel model);
 
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(SimpleViewModel.class)
+    abstract ViewModel SimpleViewModel(SimpleViewModel model);
 
 
 }

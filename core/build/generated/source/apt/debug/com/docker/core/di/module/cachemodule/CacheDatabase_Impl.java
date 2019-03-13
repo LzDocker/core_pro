@@ -15,26 +15,32 @@ import android.arch.persistence.room.util.TableInfo.Index;
 import java.lang.IllegalStateException;
 import java.lang.Override;
 import java.lang.String;
+import java.lang.SuppressWarnings;
 import java.util.HashMap;
 import java.util.HashSet;
 import javax.annotation.Generated;
 
 @Generated("android.arch.persistence.room.RoomProcessor")
+@SuppressWarnings("unchecked")
 public class CacheDatabase_Impl extends CacheDatabase {
   private volatile CacheEntityDao _cacheEntityDao;
 
+  @Override
   protected SupportSQLiteOpenHelper createOpenHelper(DatabaseConfiguration configuration) {
     final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(configuration, new RoomOpenHelper.Delegate(1) {
+      @Override
       public void createAllTables(SupportSQLiteDatabase _db) {
         _db.execSQL("CREATE TABLE IF NOT EXISTS `CacheEntity` (`cid` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `cachekey` TEXT, `data` BLOB)");
         _db.execSQL("CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)");
-        _db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"b17fa40d4187d332338b559db529bafe\")");
+        _db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"a1de8e97232e6eec5ac528c6936a55a1\")");
       }
 
+      @Override
       public void dropAllTables(SupportSQLiteDatabase _db) {
         _db.execSQL("DROP TABLE IF EXISTS `CacheEntity`");
       }
 
+      @Override
       protected void onCreate(SupportSQLiteDatabase _db) {
         if (mCallbacks != null) {
           for (int _i = 0, _size = mCallbacks.size(); _i < _size; _i++) {
@@ -43,6 +49,7 @@ public class CacheDatabase_Impl extends CacheDatabase {
         }
       }
 
+      @Override
       public void onOpen(SupportSQLiteDatabase _db) {
         mDatabase = _db;
         internalInitInvalidationTracker(_db);
@@ -53,6 +60,7 @@ public class CacheDatabase_Impl extends CacheDatabase {
         }
       }
 
+      @Override
       protected void validateMigration(SupportSQLiteDatabase _db) {
         final HashMap<String, TableInfo.Column> _columnsCacheEntity = new HashMap<String, TableInfo.Column>(3);
         _columnsCacheEntity.put("cid", new TableInfo.Column("cid", "INTEGER", true, 1));
@@ -68,7 +76,7 @@ public class CacheDatabase_Impl extends CacheDatabase {
                   + " Found:\n" + _existingCacheEntity);
         }
       }
-    }, "b17fa40d4187d332338b559db529bafe");
+    }, "a1de8e97232e6eec5ac528c6936a55a1", "b17fa40d4187d332338b559db529bafe");
     final SupportSQLiteOpenHelper.Configuration _sqliteConfig = SupportSQLiteOpenHelper.Configuration.builder(configuration.context)
         .name(configuration.name)
         .callback(_openCallback)
@@ -80,6 +88,23 @@ public class CacheDatabase_Impl extends CacheDatabase {
   @Override
   protected InvalidationTracker createInvalidationTracker() {
     return new InvalidationTracker(this, "CacheEntity");
+  }
+
+  @Override
+  public void clearAllTables() {
+    super.assertNotMainThread();
+    final SupportSQLiteDatabase _db = super.getOpenHelper().getWritableDatabase();
+    try {
+      super.beginTransaction();
+      _db.execSQL("DELETE FROM `CacheEntity`");
+      super.setTransactionSuccessful();
+    } finally {
+      super.endTransaction();
+      _db.query("PRAGMA wal_checkpoint(FULL)").close();
+      if (!_db.inTransaction()) {
+        _db.execSQL("VACUUM");
+      }
+    }
   }
 
   @Override

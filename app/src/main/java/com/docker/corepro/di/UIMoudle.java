@@ -4,6 +4,7 @@ package com.docker.corepro.di;
 import com.docker.core.di.component.BaseActivityComponent;
 import com.docker.core.di.scope.ActivityScope;
 import com.docker.corepro.ui.AccountActivity;
+import com.docker.corepro.ui.SimpleActivity;
 
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
@@ -22,5 +23,9 @@ public abstract class UIMoudle {
     @ActivityScope
     @ContributesAndroidInjector
     abstract AccountActivity contributeAccountActivityInjector();
+
+    @ActivityScope
+    @ContributesAndroidInjector
+    abstract SimpleActivity contributeSimpleActivityInjector();
 
 }
