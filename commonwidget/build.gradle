@@ -45,7 +45,6 @@ dependencies {
     })
     testImplementation rootProject.ext.dependencies["junit"]
 
-//    api rootProject.ext.dependencies["SmartRefreshLayout"]
     api rootProject.ext.dependencies["xrecyclerview"]
 
     annotationProcessor rootProject.ext.dependencies["room-compiler"]
@@ -53,8 +52,10 @@ dependencies {
     annotationProcessor rootProject.ext.dependencies["dagger-compiler"]
     annotationProcessor rootProject.ext.dependencies["dagger-android-compiler"]
     api project(":core")
-    api project(":refresh-layout")
-//    api 'com.docker.core:core:1.0.1'
+
+//    api 'com.docker.core:core:1.0.0'
+//    api 'com.docker.refreshlayout:refreshlayout:1.0.0'
+
 
 }
 uploadArchives {

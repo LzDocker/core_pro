@@ -67,20 +67,20 @@ dependencies {
     annotationProcessor rootProject.ext.dependencies["dagger-android-processor"]
     annotationProcessor rootProject.ext.dependencies["dagger-compiler"]
     annotationProcessor rootProject.ext.dependencies["dagger-android-compiler"]
-//    api project(":common")
-    api 'com.docker.common:common:1.0.1'
+    api project(":common")
+//    api 'com.docker.common:common:1.0.0'
 
 }
 uploadArchives {
     configuration = configurations.archives
     repositories{
         mavenDeployer{
-            repository(url: 'http://127.0.0.1:8081/repository/Core/') {
+            repository(url: 'http://127.0.0.1:8081/repository/core/') {
                 //你Nexus的账户密码
                 authentication(userName: 'admin', password: 'admin123')
             }
             pom.project {
-                version '1.0.3'
+                version '1.0.0'
                 artifactId 'core'
                 groupId 'com.docker.core'
                 packaging 'aar'

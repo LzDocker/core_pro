@@ -71,7 +71,7 @@ uploadArchives {
                 authentication(userName: 'admin', password: 'admin123')
             }
             pom.project {
-                version '1.0.1'
+                version '1.0.0'
                 artifactId 'common'
                 groupId 'com.docker.common'
                 packaging 'aar'

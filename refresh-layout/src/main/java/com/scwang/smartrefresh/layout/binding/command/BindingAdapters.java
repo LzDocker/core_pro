@@ -1,4 +1,4 @@
-package com.docker.commonwidget.binding.command;
+package com.scwang.smartrefresh.layout.binding.command;
 
 import android.databinding.BindingAdapter;
 

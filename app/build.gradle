@@ -78,6 +78,7 @@ dependencies {
     api project(":updatelibary")
     api project(":commonwidget")
     api project(":picture_library")
+    api project(":refresh-layout")
 //    println IsBuildMudle.toBoolean()
 //    if (!IsBuildMudle.toBoolean()) {
 ////        implementation project(':moduleAccount')

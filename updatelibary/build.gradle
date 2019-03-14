@@ -44,15 +44,12 @@ dependencies {
         exclude module: 'jsr305'
     })
     testImplementation rootProject.ext.dependencies["junit"]
-
-
-
     annotationProcessor rootProject.ext.dependencies["room-compiler"]
     annotationProcessor rootProject.ext.dependencies["dagger-android-processor"]
     annotationProcessor rootProject.ext.dependencies["dagger-compiler"]
     annotationProcessor rootProject.ext.dependencies["dagger-android-compiler"]
     api project(":core")
-//    api 'com.docker.cosre:core:1.0.1'
+//    api 'com.docker.core:core:1.0.0'
 }
 uploadArchives {
     configuration = configurations.archives

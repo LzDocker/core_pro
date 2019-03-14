@@ -43,17 +43,18 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
         exclude module: 'jsr305'
     })
-    testImplementation rootProject.ext.dependencies["junit"]
+//    testImplementation rootProject.ext.dependencies["junit"]
+//    annotationProcessor rootProject.ext.dependencies["room-compiler"]
+//    annotationProcessor rootProject.ext.dependencies["dagger-android-processor"]
+//    annotationProcessor rootProject.ext.dependencies["dagger-compiler"]
+//    annotationProcessor rootProject.ext.dependencies["dagger-android-compiler"]
+//    api project(":core")
+//    api 'com.docker.core:core:1.0.0'
 
+    api rootProject.ext.dependencies["recyclerview"]
+    api rootProject.ext.dependencies["appcompat"]
+    api rootProject.ext.dependencies["glide"]
 
-
-
-    annotationProcessor rootProject.ext.dependencies["room-compiler"]
-    annotationProcessor rootProject.ext.dependencies["dagger-android-processor"]
-    annotationProcessor rootProject.ext.dependencies["dagger-compiler"]
-    annotationProcessor rootProject.ext.dependencies["dagger-android-compiler"]
-    api project(":core")
-//    api 'com.docker.core:core:1.0.1'
 }
 uploadArchives {
     configuration = configurations.archives
