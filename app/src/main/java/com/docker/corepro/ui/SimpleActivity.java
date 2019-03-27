@@ -1,11 +1,16 @@
 package com.docker.corepro.ui;
 
+import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
+import android.util.Log;
+
 import com.docker.common.adapter.SimpleCommonRecyclerAdapter;
 import com.docker.core.base.BaseActivity;
+import com.docker.core.util.ViewEventResouce;
 import com.docker.corepro.BR;
 import com.docker.corepro.R;
 import com.docker.corepro.databinding.ActivitySimpleBinding;
@@ -55,7 +60,14 @@ public class SimpleActivity extends BaseActivity<SimpleViewModel, ActivitySimple
     }
 
     private void initView(){
+        mViewModel.getViewEventResouce().observe(this, new Observer<ViewEventResouce>() {
+            @Override
+            public void onChanged(@Nullable ViewEventResouce viewEventResouce) {
+                Log.d("sss", "onChanged:--------- "+viewEventResouce.eventType+viewEventResouce.data+viewEventResouce.message);
 
+            }
+        });
+        mBinding.setViewmodel(mViewModel);
         mBinding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
         SimpleCommonRecyclerAdapter adapter =  new SimpleCommonRecyclerAdapter(R.layout.item_test_rev,BR.clientitem);
         mBinding.recyclerView.setAdapter(adapter);
@@ -70,7 +82,7 @@ public class SimpleActivity extends BaseActivity<SimpleViewModel, ActivitySimple
             arrayList.add("-----------------------"+i);
         }
         adapter.add(arrayList);
-        mBinding.empty.showError();
-        mBinding.empty.getRetryView().setOnClickListener(v->{mBinding.empty.hide();});
+//        mBinding.empty.showError();
+//        mBinding.empty.getRetryView().setOnClickListener(v->{mBinding.empty.hide();});
     }
 }

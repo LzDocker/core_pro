@@ -7,11 +7,13 @@ import android.arch.lifecycle.Transformations;
 
 import com.docker.core.base.BaseViewModel;
 import com.docker.core.repository.Resource;
+import com.docker.core.util.ViewEventResouce;
 import com.docker.corepro.api.AccountService;
 import com.docker.corepro.repository.AccountRepository;
 import com.docker.corepro.vo.LoginParam;
 import com.docker.corepro.vo.LoginVo;
 import com.docker.corepro.vo.RegisterVo;
+import com.docker.corepro.vo.SpecLoginVo;
 import com.docker.updatelibary.vo.UpdateInfo;
 
 import javax.inject.Inject;
@@ -33,16 +35,18 @@ public class AccountViewModel extends BaseViewModel {
     }
 
     private final MutableLiveData<LoginParam> paramlv = new MutableLiveData();
-    public final LiveData<Resource<LoginVo>> loginlv =
-            Transformations.switchMap(paramlv, new Function<LoginParam, LiveData<Resource<LoginVo>>>() {
+    public final LiveData<Resource<SpecLoginVo>> loginlv =
+            Transformations.switchMap(paramlv, new Function<LoginParam, LiveData<Resource<SpecLoginVo>>>() {
                 @Override
-                public LiveData<Resource<LoginVo>> apply(LoginParam param) {
-                    return accountRepository.Login(param.name, param.pwd);
+                public LiveData<Resource<SpecLoginVo>> apply(LoginParam param) {
+                    return accountRepository.Login("https://www.wanandroid.com/user/login",param.name, param.pwd);
                 }
             });
 
 
     public void Login(String username, String pwd) {
+        viewEventResouce.setValue(new ViewEventResouce(1,"11111111",1));
+
         paramlv.setValue(new LoginParam(username, pwd));
     }
 
@@ -78,6 +82,7 @@ public class AccountViewModel extends BaseViewModel {
     public final LiveData<Resource<UpdateInfo>> checkUpdate(){
         return accountRepository.checkUpData();
     }
+
 
 
 }

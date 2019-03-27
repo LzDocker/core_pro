@@ -10,7 +10,7 @@ android {
         versionCode rootProject.ext.android.versionCode
         versionName rootProject.ext.android.versionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
+        multiDexEnabled true
     }
 //    lintOptions {
 //        // 如果为 true，则当lint发现错误时停止 gradle构建
@@ -39,20 +39,11 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-        exclude module: 'jsr305'
-    })
     testImplementation rootProject.ext.dependencies["junit"]
-//    annotationProcessor rootProject.ext.dependencies["room-compiler"]
-//    annotationProcessor rootProject.ext.dependencies["dagger-android-processor"]
-//    annotationProcessor rootProject.ext.dependencies["dagger-compiler"]
-//    annotationProcessor rootProject.ext.dependencies["dagger-android-compiler"]
-
     api rootProject.ext.dependencies["rxjava"]
     api rootProject.ext.dependencies["rxandroid"]
     api project(":ucrop")
-//    api 'com.docker.ucrop:ucrop:1.0.0'
+//    api 'com.docker.ucrop:ucrop:1.2.0'
 }
 uploadArchives {
     configuration = configurations.archives
@@ -63,7 +54,7 @@ uploadArchives {
                 authentication(userName: 'admin', password: 'admin123')
             }
             pom.project {
-                version '1.0.0'
+                version '1.2.0'
                 artifactId 'picturelibary'
                 groupId 'com.docker.picturelibary'
                 packaging 'aar'

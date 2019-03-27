@@ -13,6 +13,7 @@ import com.docker.core.util.AppExecutors;
 import com.docker.corepro.api.AccountService;
 import com.docker.corepro.api.CommonService;
 import com.docker.corepro.vo.LoginVo;
+import com.docker.corepro.vo.SpecLoginVo;
 import com.docker.updatelibary.vo.UpdateInfo;
 
 import javax.inject.Inject;
@@ -41,14 +42,29 @@ public class AccountRepository {
         this.cacheDatabase = cacheDatabase;
     }
 
-    public LiveData<Resource<LoginVo>> Login(String username, String pwd) {
-         return new NetworkBoundResourceAuto<LoginVo>(){
-             @NonNull
-             @Override
-             protected LiveData<ApiResponse<BaseResponse<LoginVo>>> createCall() {
-                 return accountService.login(username,pwd);
-             }
-         }.asLiveData();
+//    public LiveData<Resource<LoginVo>> Login(String username, String pwd) {
+//         return new NetworkBoundResourceAuto<LoginVo>(){
+//             @NonNull
+//             @Override
+//             protected LiveData<ApiResponse<BaseResponse<LoginVo>>> createCall() {
+//                 return accountService.login(username,pwd);
+//             }
+//         }.asLiveData();
+//    }
+
+    public LiveData<Resource<SpecLoginVo>> Login(String url,String username, String pwd) {
+        return new NetworkBoundResourceAuto<SpecLoginVo>(1){
+            @NonNull
+            @Override
+            protected LiveData<ApiResponse<BaseResponse<SpecLoginVo>>> createCall() {
+                return null;
+            }
+            @NonNull
+            @Override
+            protected LiveData<ApiResponse<SpecLoginVo>> createSpecCall() {
+                return accountService.login(url,username,pwd);
+            }
+        }.asLiveData();
     }
 
     public LiveData<Resource<LoginVo>> registe(String name , String pwd , String repwd){
@@ -70,6 +86,9 @@ public class AccountRepository {
             }
         }.asLiveData();
     }
+
+
+
 
 
 

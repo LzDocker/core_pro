@@ -5,6 +5,9 @@ import android.arch.lifecycle.LifecycleObserver;
 import android.arch.lifecycle.OnLifecycleEvent;
 import android.arch.lifecycle.ViewModel;
 
+import com.docker.core.util.SingleLiveEvent;
+import com.docker.core.util.ViewEventResouce;
+
 /**
  * Created by zhangxindang on 2018/8/21.
  */
@@ -42,5 +45,9 @@ public class BaseViewModel extends ViewModel implements LifecycleObserver {
     public void any() {
 
     }
+
+    public final SingleLiveEvent<ViewEventResouce> viewEventResouce = new SingleLiveEvent<>();
+
+    public SingleLiveEvent<ViewEventResouce> getViewEventResouce(){return  viewEventResouce;}
 }
 

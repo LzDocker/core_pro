@@ -47,10 +47,6 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-        exclude module: 'jsr305'
-    })
     testImplementation rootProject.ext.dependencies["junit"]
     api rootProject.ext.dependencies["appcompat"]
     api rootProject.ext.dependencies["room-runtime"]
@@ -67,8 +63,8 @@ dependencies {
     annotationProcessor rootProject.ext.dependencies["dagger-android-processor"]
     annotationProcessor rootProject.ext.dependencies["dagger-compiler"]
     annotationProcessor rootProject.ext.dependencies["dagger-android-compiler"]
-    api project(":common")
-//    api 'com.docker.common:common:1.0.0'
+//    api project(":common")
+    api 'com.docker.common:common:1.2.0'
 
 }
 uploadArchives {
@@ -80,7 +76,7 @@ uploadArchives {
                 authentication(userName: 'admin', password: 'admin123')
             }
             pom.project {
-                version '1.0.0'
+                version '1.2.2'
                 artifactId 'core'
                 groupId 'com.docker.core'
                 packaging 'aar'

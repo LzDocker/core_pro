@@ -5,6 +5,7 @@ import android.arch.lifecycle.LiveData;
 import com.docker.core.di.module.httpmodule.ApiResponse;
 import com.docker.core.di.module.httpmodule.BaseResponse;
 import com.docker.corepro.vo.LoginVo;
+import com.docker.corepro.vo.SpecLoginVo;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -22,14 +23,15 @@ import retrofit2.http.Url;
 public interface AccountService {
 
 
+
     @POST("user/register")
     @FormUrlEncoded
     LiveData<ApiResponse<BaseResponse<LoginVo>>> register(@Field("username") String username, @Field("password") String password, @Field("repassword") String repassword);
 
 
-    @POST("user/login")
+    @POST
     @FormUrlEncoded
-    LiveData<ApiResponse<BaseResponse<LoginVo>>> login(@Field("username") String username, @Field("password") String password);
+    LiveData<ApiResponse<SpecLoginVo>> login(@Url String url, @Field("username") String username, @Field("password") String password);
 
 
     @GET

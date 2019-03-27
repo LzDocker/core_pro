@@ -11,6 +11,7 @@ android {
         versionName rootProject.ext.android.versionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
+        multiDexEnabled true
     }
 //    lintOptions {
 //        // 如果为 true，则当lint发现错误时停止 gradle构建
@@ -39,17 +40,6 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-        exclude module: 'jsr305'
-    })
-//    testImplementation rootProject.ext.dependencies["junit"]
-//    annotationProcessor rootProject.ext.dependencies["room-compiler"]
-//    annotationProcessor rootProject.ext.dependencies["dagger-android-processor"]
-//    annotationProcessor rootProject.ext.dependencies["dagger-compiler"]
-//    annotationProcessor rootProject.ext.dependencies["dagger-android-compiler"]
-//    api project(":core")
-//    api 'com.docker.core:core:1.0.0'
 
     api rootProject.ext.dependencies["recyclerview"]
     api rootProject.ext.dependencies["appcompat"]
@@ -65,7 +55,7 @@ uploadArchives {
                 authentication(userName: 'admin', password: 'admin123')
             }
             pom.project {
-                version '1.0.0'
+                version '1.2.0'
                 artifactId 'ucrop'
                 groupId 'com.docker.ucrop'
                 packaging 'aar'

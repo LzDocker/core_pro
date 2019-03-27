@@ -6,6 +6,7 @@ import android.support.annotation.MainThread;
 import android.support.annotation.NonNull;
 import android.support.annotation.WorkerThread;
 import android.util.Log;
+
 import com.docker.core.di.module.cachemodule.CacheDatabase;
 import com.docker.core.di.module.cachemodule.CacheEntity;
 import com.docker.core.di.module.cachemodule.CacheStrategy;
@@ -13,7 +14,6 @@ import com.docker.core.di.module.httpmodule.ApiResponse;
 import com.docker.core.di.module.httpmodule.BaseResponse;
 import com.docker.core.util.AppExecutors;
 import com.docker.core.util.IOUtils;
-
 
 
 /**
@@ -48,6 +48,35 @@ public abstract class NetworkBoundResourceAuto<ResultType> {
         NO_ChCHE();
     }
 
+    @MainThread
+    public NetworkBoundResourceAuto(int flag) {
+        SpecLoad();
+    }
+
+    /*
+     * 特殊情况 数据格式不统一
+     *
+     * */
+
+    private void SpecLoad() {
+        setZoneValue(Resource.loading(null, null));
+        LiveData<ApiResponse<ResultType>> apiResponse = createSpecCall();
+        result.addSource(apiResponse, response -> {
+            result.removeSource(apiResponse);
+            if (response != null && response.isSuccessful() &&response.body != null) {
+                setZoneValue(Resource.success((ResultType) response.body));
+            } else {
+                onFetchFailed();
+                result.addSource(apiResponse,
+                        newData -> {
+                            result.removeSource(apiResponse);
+                            setZoneValue(Resource.error(response.errorMessage, null));
+                        });
+            }
+        });
+    }
+
+
     /*
      * 回调 ---》
      *
@@ -56,12 +85,12 @@ public abstract class NetworkBoundResourceAuto<ResultType> {
      * ===>  loading === success
      * */
     private void NO_ChCHE() {
-        setZoneValue(Resource.loading(null,null));
+        setZoneValue(Resource.loading(null, null));
         LiveData<ApiResponse<BaseResponse<ResultType>>> apiResponse = createCall();
         result.addSource(apiResponse, response -> {
             result.removeSource(apiResponse);
-            if (response.isSuccessful()&&response.body!=null) {
-                if (response!=null &&response.body.getErrno()!=null&&Integer.parseInt(response.body.getErrno())<0) { // bussiness error
+            if (response.isSuccessful() && response.body != null) {
+                if (response != null && response.body.getErrno() != null && Integer.parseInt(response.body.getErrno()) < 0) { // bussiness error
                     result.addSource(apiResponse,
                             newData -> {
                                 result.removeSource(apiResponse);
@@ -107,7 +136,7 @@ public abstract class NetworkBoundResourceAuto<ResultType> {
 
 
     private void startFetch() {
-        setZoneValue(Resource.loading(null,null));
+        setZoneValue(Resource.loading(null, null));
         switch (cacheStrategy) {
             case IF_NONE_CACHE_REQUEST:
                 fetchFromdb();
@@ -139,7 +168,7 @@ public abstract class NetworkBoundResourceAuto<ResultType> {
                 fetchFromNetwork();
                 break;
             case FIRST_CACHE_THEN_REQUEST:
-                setZoneValue(Resource.loading(null,null));
+                setZoneValue(Resource.loading(null, null));
                 fetchFromNetwork();
                 break;
             case REQUEST_FAILED_READ_CACHE:
@@ -155,7 +184,7 @@ public abstract class NetworkBoundResourceAuto<ResultType> {
                 setZoneValue(Resource.success((ResultType) newdata.body.getRst()));
                 break;
             case FIRST_CACHE_THEN_REQUEST:
-                setZoneValue(Resource.loading(null,(ResultType) newdata.body.getRst()));
+                setZoneValue(Resource.loading(null, (ResultType) newdata.body.getRst()));
                 fetchFromNetwork();
                 break;
             case REQUEST_FAILED_READ_CACHE:
@@ -171,7 +200,7 @@ public abstract class NetworkBoundResourceAuto<ResultType> {
         result.addSource(apiResponse, response -> {
             result.removeSource(apiResponse);
             if (response.isSuccessful()) {
-                if (Integer.parseInt(response.body.getErrno())<0) { // bussiness error
+                if (Integer.parseInt(response.body.getErrno()) < 0) { // bussiness error
                     onFetchNetFailed(0, response);
                 } else {
                     appExecutors.diskIO().execute(() -> {
@@ -223,7 +252,7 @@ public abstract class NetworkBoundResourceAuto<ResultType> {
                 } else {
                     setZoneValue(Resource.loading(newdata.body.getErrmsg(), null));
                 }
-               fetchFromdb();
+                fetchFromdb();
                 break;
         }
 
@@ -253,7 +282,7 @@ public abstract class NetworkBoundResourceAuto<ResultType> {
                 } else {
                     setZoneValue(Resource.success(null));
                 }
-               fetchFromdb();
+                fetchFromdb();
                 break;
         }
 
@@ -300,5 +329,9 @@ public abstract class NetworkBoundResourceAuto<ResultType> {
     @NonNull
     @MainThread
     protected abstract LiveData<ApiResponse<BaseResponse<ResultType>>> createCall();
+
+    @NonNull
+    @MainThread
+    protected  LiveData<ApiResponse<ResultType>> createSpecCall(){return null;};
 }
 

@@ -12,6 +12,10 @@
         "source": "/Users/zhangxindang/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/128bc86f16cae15b7726af07548ba9e0/res/anim/tooltip_enter.xml"
     },
     {
+        "merged": "/Users/zhangxindang/bf_workspace/corepro/core/build/intermediates/res/merged/debug/anim/push_bottom_out.xml",
+        "source": "/Users/zhangxindang/.gradle/caches/transforms-1/files-1.1/common-1.2.0.aar/40e49231b2cc5f16a5522e36b3858bd0/res/anim/push_bottom_out.xml"
+    },
+    {
         "merged": "/Users/zhangxindang/bf_workspace/corepro/core/build/intermediates/res/merged/debug/anim/abc_popup_exit.xml",
         "source": "/Users/zhangxindang/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/128bc86f16cae15b7726af07548ba9e0/res/anim/abc_popup_exit.xml"
     },
@@ -22,6 +26,10 @@
     {
         "merged": "/Users/zhangxindang/bf_workspace/corepro/core/build/intermediates/res/merged/debug/anim/abc_slide_in_top.xml",
         "source": "/Users/zhangxindang/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/128bc86f16cae15b7726af07548ba9e0/res/anim/abc_slide_in_top.xml"
+    },
+    {
+        "merged": "/Users/zhangxindang/bf_workspace/corepro/core/build/intermediates/res/merged/debug/anim/push_bottom_in.xml",
+        "source": "/Users/zhangxindang/.gradle/caches/transforms-1/files-1.1/common-1.2.0.aar/40e49231b2cc5f16a5522e36b3858bd0/res/anim/push_bottom_in.xml"
     },
     {
         "merged": "/Users/zhangxindang/bf_workspace/corepro/core/build/intermediates/res/merged/debug/anim/abc_shrink_fade_out_from_bottom.xml",

@@ -17,13 +17,13 @@ import android.widget.Toast;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.SPUtils;
-import com.docker.commonwidget.changeenvirmonent.EnvironmentManager;
 import com.docker.core.base.BaseActivity;
 import com.docker.core.di.module.httpmodule.MHeader;
 import com.docker.core.di.module.httpmodule.progress.ProgressListen;
 import com.docker.core.di.module.httpmodule.progress.ProgressManager;
 import com.docker.core.repository.Resource;
 import com.docker.core.util.AppExecutors;
+import com.docker.core.util.ViewEventResouce;
 import com.docker.corepro.R;
 import com.docker.corepro.api.CommonService;
 import com.docker.corepro.api.ServiceConfig;
@@ -31,6 +31,7 @@ import com.docker.corepro.databinding.ActivityAccountBinding;
 import com.docker.corepro.viewmodel.AccountViewModel;
 import com.docker.corepro.vo.LoginVo;
 import com.docker.corepro.vo.RegisterVo;
+import com.docker.updatelibary.environment.EnvironmentManager;
 import com.docker.updatelibary.versioncontroler.VersionManager;
 import com.luck.picture.lib.PictureSelector;
 import com.luck.picture.lib.config.PictureConfig;
@@ -151,6 +152,14 @@ public class AccountActivity extends BaseActivity<AccountViewModel, ActivityAcco
 
 
     private void initview() {
+
+        mViewModel.getViewEventResouce().observe(this, new Observer<ViewEventResouce>() {
+            @Override
+            public void onChanged(@Nullable ViewEventResouce viewEventResouce) {
+                Log.d("sss", "onChanged:--------- "+viewEventResouce.eventType+viewEventResouce.data+viewEventResouce.message);
+
+            }
+        });
 //        boolean islogin = (boolean) SpTool.get(this, "LOGIN_FLAG", false);
         boolean islogin = (boolean) SPUtils.getInstance("eee").getBoolean( "LOGIN_FLAG",false);
         if (islogin) {
@@ -180,12 +189,9 @@ public class AccountActivity extends BaseActivity<AccountViewModel, ActivityAcco
             toLogin();
         });
 
-        mViewModel.loginlv.observe(this, new Observer<Resource<LoginVo>>() {
-            @Override
-            public void onChanged(@Nullable Resource<LoginVo> loginVoResource) {
+        mViewModel.loginlv.observe(this, loginVoResource -> {
 //                showToast(loginVoResource.status.name());
-
-            }
+            Log.d("ssss", "onChanged: --------login---------------"+loginVoResource.status.name());
         });
     }
 
@@ -358,6 +364,11 @@ public class AccountActivity extends BaseActivity<AccountViewModel, ActivityAcco
             public void onComplete(Response<ResponseBody> response) {
                 mBinding.tvRegister.setText("onComplete");
                 AppUtils.installApp(Environment.getExternalStorageDirectory() + "/qq.apk");
+
+
+
+
+
             }
         });
 

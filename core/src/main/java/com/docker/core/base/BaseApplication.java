@@ -12,7 +12,7 @@ import android.support.multidex.MultiDex;
 import android.support.multidex.MultiDexApplication;
 
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.docker.core.BuildConfig;
+import com.docker.common.BuildConfig;
 import com.docker.core.di.module.AppModule;
 import com.docker.core.di.module.cachemodule.CacheModule;
 import com.docker.core.di.module.httpmodule.GlobalConfigModule;

@@ -2,7 +2,7 @@ package com.docker.corepro;
 
 import android.content.Context;
 
-import com.docker.commonwidget.EmptyLayout;
+import com.docker.common.widget.EmptyLayout;
 import com.docker.core.base.BaseApplication;
 import com.docker.core.di.module.httpmodule.GlobalConfigModule;
 import com.docker.core.di.module.httpmodule.HttpRequestHandler;
@@ -44,7 +44,7 @@ public class simpleApp extends BaseApplication {
         int[] imgres = {R.drawable.audio_placeholder,R.drawable.audio_placeholder,R.drawable.audio_placeholder,};
         String[] textstr = {"加载中...","请重试","暂无数据"};
         int[] textcolor = {R.color.bar_grey,R.color.colorPrimary,R.color.colorPrimaryDark};
-         EmptyLayout.setDefaultViewRes(imgres,textstr,textcolor);
+        EmptyLayout.setDefaultViewRes(imgres,textstr,textcolor);
     }
 
     @Override
