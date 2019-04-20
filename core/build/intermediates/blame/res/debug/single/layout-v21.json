@@ -1,18 +1,18 @@
 [
     {
         "merged": "/Users/zhangxindang/bf_workspace/corepro/core/build/intermediates/res/merged/debug/layout-v21/notification_action_tombstone.xml",
-        "source": "/Users/zhangxindang/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/0f33f3a3c5ba60c08206fd5de59a424b/res/layout-v21/notification_action_tombstone.xml"
+        "source": "/Users/zhangxindang/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/2b40d4fc450f0f1cd2bdf86011297fd5/res/layout-v21/notification_action_tombstone.xml"
     },
     {
         "merged": "/Users/zhangxindang/bf_workspace/corepro/core/build/intermediates/res/merged/debug/layout-v21/notification_template_custom_big.xml",
-        "source": "/Users/zhangxindang/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/0f33f3a3c5ba60c08206fd5de59a424b/res/layout-v21/notification_template_custom_big.xml"
+        "source": "/Users/zhangxindang/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/2b40d4fc450f0f1cd2bdf86011297fd5/res/layout-v21/notification_template_custom_big.xml"
     },
     {
         "merged": "/Users/zhangxindang/bf_workspace/corepro/core/build/intermediates/res/merged/debug/layout-v21/notification_action.xml",
-        "source": "/Users/zhangxindang/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/0f33f3a3c5ba60c08206fd5de59a424b/res/layout-v21/notification_action.xml"
+        "source": "/Users/zhangxindang/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/2b40d4fc450f0f1cd2bdf86011297fd5/res/layout-v21/notification_action.xml"
     },
     {
         "merged": "/Users/zhangxindang/bf_workspace/corepro/core/build/intermediates/res/merged/debug/layout-v21/notification_template_icon_group.xml",
-        "source": "/Users/zhangxindang/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/0f33f3a3c5ba60c08206fd5de59a424b/res/layout-v21/notification_template_icon_group.xml"
+        "source": "/Users/zhangxindang/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/2b40d4fc450f0f1cd2bdf86011297fd5/res/layout-v21/notification_template_icon_group.xml"
     }
 ]

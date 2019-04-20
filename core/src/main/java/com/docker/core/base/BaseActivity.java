@@ -1,5 +1,6 @@
 package com.docker.core.base;
 
+import android.arch.lifecycle.Observer;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.databinding.DataBindingUtil;
@@ -28,8 +29,11 @@ public abstract class BaseActivity<VM extends BaseViewModel, VB extends ViewData
     protected VM mViewModel;
     protected ToolBar mToolbar;
     private int mThemeColor = -1;
+
     protected abstract int getLayoutId();
+
     public abstract VM getViewModel();
+
     @Inject
     Empty empty;
     private InputMethodManager mInputMethodManager;
@@ -60,11 +64,17 @@ public abstract class BaseActivity<VM extends BaseViewModel, VB extends ViewData
                 rootView.addView(this.getLayoutInflater().inflate(this.getLayoutId(), (ViewGroup) null));
             }
         }
-        if(isImmersionBarEnabled()){
+        if (isImmersionBarEnabled()) {
             initImmersionBar();
         }
         mViewModel = getViewModel();
         getLifecycle().addObserver(mViewModel);
+        mViewModel.commonmediatorLiveData.observe(this, new Observer<Object>() {
+            @Override
+            public void onChanged(@Nullable Object o) {
+
+            }
+        });
     }
 
     /*
@@ -88,7 +98,7 @@ public abstract class BaseActivity<VM extends BaseViewModel, VB extends ViewData
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if(isImmersionBarEnabled()){
+        if (isImmersionBarEnabled()) {
             ImmersionBar.with(this).destroy();
         }
     }
@@ -124,6 +134,7 @@ public abstract class BaseActivity<VM extends BaseViewModel, VB extends ViewData
     protected View getToolBar() {
         return this.getLayoutInflater().inflate(R.layout.toolbar, (ViewGroup) null);
     }
+
     /**
      * 是否可以使用沉浸式
      * Is immersion bar enabled boolean.
@@ -166,7 +177,6 @@ public abstract class BaseActivity<VM extends BaseViewModel, VB extends ViewData
         super.onTitleChanged(title, color);
 
     }
-
 
 
 }

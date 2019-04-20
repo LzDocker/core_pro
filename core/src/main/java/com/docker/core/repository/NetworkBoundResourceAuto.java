@@ -298,7 +298,7 @@ public abstract class NetworkBoundResourceAuto<ResultType> {
     protected void onFetchFailed() {
     }
 
-    public LiveData<Resource<ResultType>> asLiveData() {
+    public MediatorLiveData<Resource<ResultType>> asLiveData() {
         return result;
     }
 
@@ -306,6 +306,7 @@ public abstract class NetworkBoundResourceAuto<ResultType> {
     private void saveCallResult(@NonNull ApiResponse<BaseResponse<ResultType>> response) {
         CacheEntity cacheEntity = new CacheEntity();
         cacheEntity.setKey(cachekey);
+
         cacheEntity.setData(IOUtils.toByteArray(response));
         cacheDatabase.cacheEntityDao().insertCache(cacheEntity);
     }

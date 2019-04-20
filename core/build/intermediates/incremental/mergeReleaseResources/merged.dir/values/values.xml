@@ -265,6 +265,12 @@
             <enum name="screen" value="15"/>
         </attr></declare-styleable>
     <declare-styleable name="ViewStubCompat"><attr name="android:layout"/><attr name="android:inflatedId"/><attr name="android:id"/></declare-styleable>
+    <declare-styleable name="empty_layout"><attr format="enum" name="status">
+            <enum name="BdError" value="0"/>
+            <enum name="BdEmpty" value="1"/>
+            <enum name="BdLoading" value="2"/>
+            <enum name="BdHiden" value="3"/>
+        </attr></declare-styleable>
     <dimen name="abc_action_bar_content_inset_material">16dp</dimen>
     <dimen name="abc_action_bar_content_inset_with_nav">72dp</dimen>
     <dimen name="abc_action_bar_default_height_material">56dp</dimen>

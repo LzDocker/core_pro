@@ -109,7 +109,7 @@
     },
     {
         "merged": "/Users/zhangxindang/bf_workspace/corepro/core/build/intermediates/res/merged/release/drawable/common_bg_blue.xml",
-        "source": "/Users/zhangxindang/.gradle/caches/transforms-1/files-1.1/common-1.2.0.aar/40e49231b2cc5f16a5522e36b3858bd0/res/drawable/common_bg_blue.xml"
+        "source": "/Users/zhangxindang/bf_workspace/corepro/common/build/intermediates/bundles/release/res/drawable/common_bg_blue.xml"
     },
     {
         "merged": "/Users/zhangxindang/bf_workspace/corepro/core/build/intermediates/res/merged/release/drawable/tooltip_frame_dark.xml",

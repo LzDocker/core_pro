@@ -11,13 +11,18 @@
 
     <com.scwang.smartrefresh.layout.SmartRefreshLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-
+        android:layout_height="match_parent"
+        bind:onRefreshCommand="@{viewmodel.onrefreshCommand}"
+        bind:onloadmoreCommand="@{viewmodel.onloadmoreCommand}"
+        bind:bdcomplete="@={viewmodel.complete}"
+        bind:srlEnableRefresh="@{viewmodel.enableRefresh}"
+        bind:SrlEnableLoadMore="@{viewmodel.enableLoadmore}"
+        >
 
         <com.docker.common.widget.EmptyLayout
             android:id="@+id/empty"
             bind:status="@{viewmodel.emptystatus}"
+            bind:onRetryCommand="@{viewmodel.retrycommand}"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 

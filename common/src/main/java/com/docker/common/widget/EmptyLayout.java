@@ -51,7 +51,7 @@ public class EmptyLayout extends LinearLayout {
 
         setOrientation(LinearLayout.VERTICAL);
         mbinding = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.common_empty_view, this, true);
-        if (!TextUtils.isEmpty(innerBuilder.textstr[0])) {
+        if (innerBuilder.textstr != null && !TextUtils.isEmpty(innerBuilder.textstr[0])) {
             mbinding.commonIvLoading.setBackgroundDrawable(context.getResources().getDrawable(innerBuilder.imgres[0]));
             mbinding.commonIvError.setBackgroundDrawable(context.getResources().getDrawable(innerBuilder.imgres[1]));
             mbinding.commonIvNodata.setBackgroundDrawable(context.getResources().getDrawable(innerBuilder.imgres[2]));
@@ -64,7 +64,7 @@ public class EmptyLayout extends LinearLayout {
             mbinding.commonTvError.setTextColor(context.getResources().getColor(innerBuilder.textcolor[1]));
             mbinding.commonTvNodata.setTextColor(context.getResources().getColor(innerBuilder.textcolor[2]));
         } else {
-            ToastUtils.showShort("请先设置资源---emptylayout");
+//            ToastUtils.showShort("请先设置资源---emptylayout");
         }
 
     }
@@ -76,6 +76,7 @@ public class EmptyLayout extends LinearLayout {
     }
 
     public void showLoading() {
+        mbinding.commonEmptyCoutainer.setBackgroundColor(getResources().getColor(R.color.common_white));
         for (int i = 0; i < this.getChildCount(); i++) {
             if (this.getChildAt(i) == mbinding.commonEmptyCoutainer) {
                 this.getChildAt(i).setVisibility(VISIBLE);
@@ -94,7 +95,7 @@ public class EmptyLayout extends LinearLayout {
     }
 
     public void showError() {
-
+        mbinding.commonEmptyCoutainer.setBackgroundColor(getResources().getColor(R.color.common_bg));
         for (int i = 0; i < this.getChildCount(); i++) {
             if (this.getChildAt(i) == mbinding.commonEmptyCoutainer) {
                 this.getChildAt(i).setVisibility(VISIBLE);
@@ -110,13 +111,14 @@ public class EmptyLayout extends LinearLayout {
             mbinding.commonErrView.getChildAt(i).setVisibility(VISIBLE);
         }
         mbinding.commonTvError.setOnClickListener(v -> {
-            if(onretryListener!=null){
+            if (onretryListener != null) {
                 onretryListener.onretry();
             }
         });
     }
 
     public void showNoData() {
+        mbinding.commonEmptyCoutainer.setBackgroundColor(getResources().getColor(R.color.common_bg));
         for (int i = 0; i < this.getChildCount(); i++) {
             if (this.getChildAt(i) == mbinding.commonEmptyCoutainer) {
                 this.getChildAt(i).setVisibility(VISIBLE);
@@ -197,11 +199,12 @@ public class EmptyLayout extends LinearLayout {
     public interface OnStatusChangeListener {
         void onStatusChanged();
     }
+
     public void setListener(OnStatusChangeListener listener) {
         this.listener = listener;
     }
 
-    public interface OnretryListener{
+    public interface OnretryListener {
         void onretry();
     }
 

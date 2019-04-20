@@ -5,10 +5,17 @@ import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.provider.Settings;
 import android.support.annotation.Nullable;
+import android.support.v4.content.FileProvider;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -17,6 +24,7 @@ import android.widget.Toast;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.SPUtils;
+import com.blankj.utilcode.util.ToastUtils;
 import com.docker.core.base.BaseActivity;
 import com.docker.core.di.module.httpmodule.MHeader;
 import com.docker.core.di.module.httpmodule.progress.ProgressListen;
@@ -24,6 +32,8 @@ import com.docker.core.di.module.httpmodule.progress.ProgressManager;
 import com.docker.core.repository.Resource;
 import com.docker.core.util.AppExecutors;
 import com.docker.core.util.ViewEventResouce;
+import com.docker.corepro.BuildConfig;
+import com.docker.corepro.MainActivity;
 import com.docker.corepro.R;
 import com.docker.corepro.api.CommonService;
 import com.docker.corepro.api.ServiceConfig;
@@ -38,6 +48,8 @@ import com.luck.picture.lib.config.PictureConfig;
 import com.luck.picture.lib.config.PictureMimeType;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
+import java.io.File;
+import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
@@ -57,6 +69,7 @@ public class AccountActivity extends BaseActivity<AccountViewModel, ActivityAcco
 
     @Inject
     ViewModelProvider.Factory factory;
+
 
     @Inject
     MHeader mHeader;
@@ -84,7 +97,7 @@ public class AccountActivity extends BaseActivity<AccountViewModel, ActivityAcco
 
     public void click(View view) {
 
-        Intent intent = new Intent(AccountActivity.this,SimpleActivity.class);
+        Intent intent = new Intent(AccountActivity.this, SimpleActivity.class);
         startActivity(intent);
 //        testpickImage();
 //        initUpdate();
@@ -156,12 +169,12 @@ public class AccountActivity extends BaseActivity<AccountViewModel, ActivityAcco
         mViewModel.getViewEventResouce().observe(this, new Observer<ViewEventResouce>() {
             @Override
             public void onChanged(@Nullable ViewEventResouce viewEventResouce) {
-                Log.d("sss", "onChanged:--------- "+viewEventResouce.eventType+viewEventResouce.data+viewEventResouce.message);
+                Log.d("sss", "onChanged:--------- " + viewEventResouce.eventType + viewEventResouce.data + viewEventResouce.message);
 
             }
         });
 //        boolean islogin = (boolean) SpTool.get(this, "LOGIN_FLAG", false);
-        boolean islogin = (boolean) SPUtils.getInstance("eee").getBoolean( "LOGIN_FLAG",false);
+        boolean islogin = (boolean) SPUtils.getInstance("eee").getBoolean("LOGIN_FLAG", false);
         if (islogin) {
             toHome(null);
             finish();
@@ -191,7 +204,7 @@ public class AccountActivity extends BaseActivity<AccountViewModel, ActivityAcco
 
         mViewModel.loginlv.observe(this, loginVoResource -> {
 //                showToast(loginVoResource.status.name());
-            Log.d("ssss", "onChanged: --------login---------------"+loginVoResource.status.name());
+            Log.d("ssss", "onChanged: --------login---------------" + loginVoResource.status.name());
         });
     }
 
@@ -337,7 +350,7 @@ public class AccountActivity extends BaseActivity<AccountViewModel, ActivityAcco
 //        });
 
 
-        progressManager.download(Environment.getExternalStorageDirectory().getPath(), "qq.apk", "http://116.117.158.129/f2.market.xiaomi.com/download/AppStore/04275951df2d94fee0a8210a3b51ae624cc34483a/com.tencent.mm.apk", new ProgressListen() {
+        progressManager.download(getCacheDir().getPath(), "qq.apk", "http://116.117.158.129/f2.market.xiaomi.com/download/AppStore/04275951df2d94fee0a8210a3b51ae624cc34483a/com.tencent.mm.apk", new ProgressListen() {
             @Override
             public void ondownloadStart(Call call) {
                 downCall = call;
@@ -363,16 +376,44 @@ public class AccountActivity extends BaseActivity<AccountViewModel, ActivityAcco
             @Override
             public void onComplete(Response<ResponseBody> response) {
                 mBinding.tvRegister.setText("onComplete");
-                AppUtils.installApp(Environment.getExternalStorageDirectory() + "/qq.apk");
-
-
-
-
-
+                AppUtils.installApp(getCacheDir().getPath() + "/qq.apk");
+//                installApk(new File(getCacheDir().getPath() + "/qq.apk"));
             }
         });
 
     }
+
+
+
+    private void installApk(File file) {
+        try{
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            Uri apkUri;
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                apkUri = FileProvider.getUriForFile(AccountActivity.this
+                        , "项目包名.FileProvider"
+                        , file);
+            } else {
+                apkUri = Uri.fromFile(file);
+            }
+            intent.setDataAndType(apkUri, "application/vnd.android.package-archive");
+            // 查询所有符合 intent 跳转目标应用类型的应用，注意此方法必须放置在 setDataAndType 方法之后
+            List<ResolveInfo> resolveLists = AccountActivity.this.getPackageManager().queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY);
+            // 然后全部授权
+            for (ResolveInfo resolveInfo : resolveLists){
+                String packageName = resolveInfo.activityInfo.packageName;
+                AccountActivity.this.grantUriPermission(packageName, apkUri, Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+            }
+            AccountActivity.this.startActivity(intent);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+
+
 
 
     @Override
@@ -384,7 +425,7 @@ public class AccountActivity extends BaseActivity<AccountViewModel, ActivityAcco
     }
 
 
-    private void testpickImage(){
+    private void testpickImage() {
         // 进入相册 以下是例子：不需要的api可以不写
         PictureSelector.create(this)
                 .openGallery(PictureMimeType.ofAll())// 全部.PictureMimeType.ofAll()、图片.ofImage()、视频.ofVideo()、音频.ofAudio()

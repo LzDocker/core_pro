@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 
 import com.blankj.utilcode.util.AppUtils;
 import com.docker.core.di.module.cachemodule.CacheDatabase;
+import com.docker.core.di.module.cachemodule.CacheStrategy;
 import com.docker.core.di.module.httpmodule.ApiResponse;
 import com.docker.core.di.module.httpmodule.BaseResponse;
 import com.docker.core.repository.NetworkBoundResourceAuto;
@@ -27,9 +28,9 @@ import javax.inject.Singleton;
 public class AccountRepository {
 
     private final AppExecutors appExecutors;
-    private final AccountService accountService;
-    private final CacheDatabase cacheDatabase;
 
+    private final CacheDatabase cacheDatabase;
+    private final AccountService accountService;
 
     @Inject
     CommonService commonService;
@@ -52,44 +53,70 @@ public class AccountRepository {
 //         }.asLiveData();
 //    }
 
-    public LiveData<Resource<SpecLoginVo>> Login(String url,String username, String pwd) {
-        return new NetworkBoundResourceAuto<SpecLoginVo>(1){
+    public LiveData<Resource<SpecLoginVo>> Login(String url, String username, String pwd) {
+        return new NetworkBoundResourceAuto<SpecLoginVo>(1) {
             @NonNull
             @Override
             protected LiveData<ApiResponse<BaseResponse<SpecLoginVo>>> createCall() {
                 return null;
             }
+
             @NonNull
             @Override
             protected LiveData<ApiResponse<SpecLoginVo>> createSpecCall() {
-                return accountService.login(url,username,pwd);
+                return accountService.login(url, username, pwd);
             }
         }.asLiveData();
     }
 
-    public LiveData<Resource<LoginVo>> registe(String name , String pwd , String repwd){
-        return new NetworkBoundResourceAuto<LoginVo>(){
+    public LiveData<Resource<LoginVo>> registe(String name, String pwd, String repwd) {
+        return new NetworkBoundResourceAuto<LoginVo>() {
             @NonNull
             @Override
             protected LiveData<ApiResponse<BaseResponse<LoginVo>>> createCall() {
-                return accountService.register(name,pwd,repwd);
+                return accountService.register(name, pwd, repwd);
             }
         }.asLiveData();
     }
 
-    public LiveData<Resource<UpdateInfo>> checkUpData(){
-        return new NetworkBoundResourceAuto<UpdateInfo>(){
+    public LiveData<Resource<UpdateInfo>> checkUpData() {
+        return new NetworkBoundResourceAuto<UpdateInfo>() {
             @NonNull
             @Override
             protected LiveData<ApiResponse<BaseResponse<UpdateInfo>>> createCall() {
-                return commonService.systemUpdate("2","1",AppUtils.getAppVersionCode()+"");
+                return commonService.systemUpdate("2", "1", AppUtils.getAppVersionCode() + "");
             }
         }.asLiveData();
     }
 
 
+    public <T> LiveData<Resource<T>> noneChache(LiveData<ApiResponse<BaseResponse<T>>> servicefun) {
+        return new NetworkBoundResourceAuto<T>() {
+            @NonNull
+            @Override
+            protected LiveData<ApiResponse<BaseResponse<T>>> createCall() {
+                return servicefun;
+            }
+        }.asLiveData();
+    }
 
+    public <T> LiveData<Resource<T>> ChacheFeatch(LiveData<ApiResponse<BaseResponse<T>>> servicefun, CacheStrategy cacheStrategy, String cashkey) {
+        return new NetworkBoundResourceAuto<T>(appExecutors, cacheStrategy, cacheDatabase, cashkey) {
+            @NonNull
+            @Override
+            protected LiveData<ApiResponse<BaseResponse<T>>> createCall() {
+                return servicefun;
+            }
+        }.asLiveData();
+    }
 
-
-
+    public <T> LiveData<Resource<T>> SpecialFeatch(LiveData<ApiResponse<BaseResponse<T>>> servicefun) {
+        return new NetworkBoundResourceAuto<T>(0) {
+            @NonNull
+            @Override
+            protected LiveData<ApiResponse<BaseResponse<T>>> createCall() {
+                return servicefun;
+            }
+        }.asLiveData();
+    }
 }

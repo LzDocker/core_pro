@@ -2,6 +2,7 @@ package com.docker.core.base;
 
 import android.arch.lifecycle.Lifecycle;
 import android.arch.lifecycle.LifecycleObserver;
+import android.arch.lifecycle.MediatorLiveData;
 import android.arch.lifecycle.OnLifecycleEvent;
 import android.arch.lifecycle.ViewModel;
 
@@ -49,5 +50,7 @@ public class BaseViewModel extends ViewModel implements LifecycleObserver {
     public final SingleLiveEvent<ViewEventResouce> viewEventResouce = new SingleLiveEvent<>();
 
     public SingleLiveEvent<ViewEventResouce> getViewEventResouce(){return  viewEventResouce;}
+
+    public final MediatorLiveData<Object> commonmediatorLiveData = new MediatorLiveData<Object>();
 }
 

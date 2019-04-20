@@ -6,8 +6,11 @@ import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.Transformations;
 
 import com.docker.core.base.BaseViewModel;
+import com.docker.core.repository.CommonRepository;
 import com.docker.core.repository.Resource;
 import com.docker.core.util.ViewEventResouce;
+import com.docker.core.util.callback.NetBoundCallback;
+import com.docker.core.util.callback.NetBoundObserver;
 import com.docker.corepro.api.AccountService;
 import com.docker.corepro.repository.AccountRepository;
 import com.docker.corepro.vo.LoginParam;
@@ -26,8 +29,13 @@ public class AccountViewModel extends BaseViewModel {
 
     @Inject
     AccountService service;
+
     @Inject
     AccountRepository accountRepository;
+
+    @Inject
+    CommonRepository commonRepository;
+
 
     @Inject
     public AccountViewModel() {
@@ -35,17 +43,18 @@ public class AccountViewModel extends BaseViewModel {
     }
 
     private final MutableLiveData<LoginParam> paramlv = new MutableLiveData();
+
     public final LiveData<Resource<SpecLoginVo>> loginlv =
             Transformations.switchMap(paramlv, new Function<LoginParam, LiveData<Resource<SpecLoginVo>>>() {
                 @Override
                 public LiveData<Resource<SpecLoginVo>> apply(LoginParam param) {
-                    return accountRepository.Login("https://www.wanandroid.com/user/login",param.name, param.pwd);
+                    return accountRepository.Login("https://www.wanandroid.com/user/login", param.name, param.pwd);
                 }
             });
 
 
     public void Login(String username, String pwd) {
-        viewEventResouce.setValue(new ViewEventResouce(1,"11111111",1));
+        viewEventResouce.setValue(new ViewEventResouce(1, "11111111", 1));
 
         paramlv.setValue(new LoginParam(username, pwd));
     }
@@ -64,25 +73,45 @@ public class AccountViewModel extends BaseViewModel {
 
     public LiveData<Resource<LoginVo>> register(RegisterVo registerVo) {
         registerParm.setValue(registerVo);
-        return  registVo;
+
+        return registVo;
 
     }
 
     public final LiveData<Resource<LoginVo>> registVo = Transformations.switchMap(registerParm, new Function<RegisterVo, LiveData<Resource<LoginVo>>>() {
         @Override
         public LiveData<Resource<LoginVo>> apply(RegisterVo input) {
-            return accountRepository.registe(input.getUsername(), input.getPassword(), input.getRepassword());
+//            return accountRepository.registe(input.getUsername(), input.getPassword(), input.getRepassword());
+
+            return commonRepository.noneChache(service.register(input.getUsername(), input.getPassword(), input.getRepassword()));
         }
     });
 
     /*
-    *
-    * 更新
-    * */
-    public final LiveData<Resource<UpdateInfo>> checkUpdate(){
+     *
+     * 更新
+     * */
+    public final LiveData<Resource<UpdateInfo>> checkUpdate() {
         return accountRepository.checkUpData();
     }
 
+    public void registerqq(RegisterVo input) {
 
+        commonmediatorLiveData.addSource(commonRepository.noneChache(service.register(input.getUsername(), input.getPassword(),
+                input.getRepassword())), new NetBoundObserver<>(new NetBoundCallback<LoginVo>() {
+
+
+            @Override
+            public void onBusinessError(Resource<LoginVo> resource) {
+
+            }
+
+            @Override
+            public void onNetworkError(Resource<LoginVo> resource) {
+
+            }
+        }));
+
+    }
 
 }

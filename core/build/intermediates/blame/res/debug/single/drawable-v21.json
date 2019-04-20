@@ -1,18 +1,18 @@
 [
     {
         "merged": "/Users/zhangxindang/bf_workspace/corepro/core/build/intermediates/res/merged/debug/drawable-v21/abc_action_bar_item_background_material.xml",
-        "source": "/Users/zhangxindang/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/128bc86f16cae15b7726af07548ba9e0/res/drawable-v21/abc_action_bar_item_background_material.xml"
+        "source": "/Users/zhangxindang/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/5a272d57ed4d343fbc1a9638b993245a/res/drawable-v21/abc_action_bar_item_background_material.xml"
     },
     {
         "merged": "/Users/zhangxindang/bf_workspace/corepro/core/build/intermediates/res/merged/debug/drawable-v21/abc_edit_text_material.xml",
-        "source": "/Users/zhangxindang/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/128bc86f16cae15b7726af07548ba9e0/res/drawable-v21/abc_edit_text_material.xml"
+        "source": "/Users/zhangxindang/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/5a272d57ed4d343fbc1a9638b993245a/res/drawable-v21/abc_edit_text_material.xml"
     },
     {
         "merged": "/Users/zhangxindang/bf_workspace/corepro/core/build/intermediates/res/merged/debug/drawable-v21/notification_action_background.xml",
-        "source": "/Users/zhangxindang/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/0f33f3a3c5ba60c08206fd5de59a424b/res/drawable-v21/notification_action_background.xml"
+        "source": "/Users/zhangxindang/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/2b40d4fc450f0f1cd2bdf86011297fd5/res/drawable-v21/notification_action_background.xml"
     },
     {
         "merged": "/Users/zhangxindang/bf_workspace/corepro/core/build/intermediates/res/merged/debug/drawable-v21/abc_btn_colored_material.xml",
-        "source": "/Users/zhangxindang/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/128bc86f16cae15b7726af07548ba9e0/res/drawable-v21/abc_btn_colored_material.xml"
+        "source": "/Users/zhangxindang/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/5a272d57ed4d343fbc1a9638b993245a/res/drawable-v21/abc_btn_colored_material.xml"
     }
 ]

@@ -14,9 +14,7 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.Set;
-import javax.annotation.Generated;
 
-@Generated("android.arch.persistence.room.RoomProcessor")
 @SuppressWarnings("unchecked")
 public class CacheEntityDao_Impl implements CacheEntityDao {
   private final RoomDatabase __db;

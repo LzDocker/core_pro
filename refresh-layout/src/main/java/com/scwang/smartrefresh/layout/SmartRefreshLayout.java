@@ -367,7 +367,32 @@ public class SmartRefreshLayout extends ViewGroup implements RefreshLayout, Nest
         return view.getmEnableRefresh();
     }
 
+    public boolean getmEnableLoadMore() {
+        return mEnableLoadMore;
+    }
 
+    public void setmEnableLoadMore(boolean mEnableLoadMore) {
+        this.mEnableLoadMore = mEnableLoadMore;
+    }
+
+
+
+    @BindingAdapter("SrlEnableLoadMoreAttrChanged")
+    public static void setSrlEnableLoadMoreAttrChanged(SmartRefreshLayout view, InverseBindingListener inverseBindingListener) {
+        if (inverseBindingListener == null) {
+            view.setListener(null);
+        } else {
+            view.setListener(inverseBindingListener::onChange);
+        }
+    }
+    @BindingAdapter(value = "SrlEnableLoadMore")
+    public static void setmEnableLoadMore(SmartRefreshLayout view, boolean setSrlEnableLoadMore) {
+        view.setmEnableLoadMore(setSrlEnableLoadMore);
+    }
+    @InverseBindingAdapter(attribute = "srlEnableRefresh", event = "srlEnableRefreshAttrChanged")
+    public static boolean getmEnableLoadMoreAttrChanged(SmartRefreshLayout view) {
+        return view.getmEnableLoadMore();
+    }
 
 
 

@@ -2,4 +2,5 @@
 <resources>
     <color name="common_white">#ffffff</color>
     <color name="common_grey">#999999</color>
+    <color name="common_bg">#FAFAFA</color>
 </resources>

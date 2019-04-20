@@ -63,8 +63,8 @@ dependencies {
     annotationProcessor rootProject.ext.dependencies["dagger-android-processor"]
     annotationProcessor rootProject.ext.dependencies["dagger-compiler"]
     annotationProcessor rootProject.ext.dependencies["dagger-android-compiler"]
-//    api project(":common")
-    api 'com.docker.common:common:1.2.0'
+    api project(":common")
+//    api 'com.docker.common:common:1.2.0'
 
 }
 uploadArchives {

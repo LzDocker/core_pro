@@ -18,9 +18,7 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.HashMap;
 import java.util.HashSet;
-import javax.annotation.Generated;
 
-@Generated("android.arch.persistence.room.RoomProcessor")
 @SuppressWarnings("unchecked")
 public class CacheDatabase_Impl extends CacheDatabase {
   private volatile CacheEntityDao _cacheEntityDao;

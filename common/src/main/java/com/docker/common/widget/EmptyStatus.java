@@ -7,5 +7,4 @@ public class EmptyStatus {
     public static final int BdLoading = 2;
     public static final int BdHiden = 3;
 
-
 }
