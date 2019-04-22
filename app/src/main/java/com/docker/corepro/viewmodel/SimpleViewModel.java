@@ -38,5 +38,7 @@ public class SimpleViewModel extends HivsBaseViewModel {
         super.onCleared();
     }
 
+    public String img = "https://wanandroid.com/blogimgs/54f4350f-039d-48b6-a38b-0933e1405004.png";
+
 
 }

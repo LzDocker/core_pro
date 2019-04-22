@@ -7,16 +7,14 @@
         android:id="@+id/common_empty_coutainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
         android:orientation="vertical" android:tag="layout/common_empty_view_0" xmlns:android="http://schemas.android.com/apk/res/android">
 
         <LinearLayout
             android:id="@+id/common_loading_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
             android:gravity="center"
-           >
+            android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/common_iv_loading"
@@ -85,8 +83,7 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:orientation="vertical"
-            android:visibility="gone"
-           >
+            android:visibility="gone">
 
             <ImageView
                 android:id="@+id/common_iv_error"
