@@ -3,6 +3,7 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="svn" />
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/bfsourcelibary" vcs="svn" />
     <mapping directory="$PROJECT_DIR$/common" vcs="svn" />
     <mapping directory="$PROJECT_DIR$/commonwidget" vcs="svn" />
     <mapping directory="$PROJECT_DIR$/picture_library" vcs="svn" />

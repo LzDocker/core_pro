@@ -5,6 +5,7 @@ import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.Transformations;
 
+import com.bfhd.bfsourcelibary.base.HivsBaseViewModel;
 import com.docker.core.base.BaseViewModel;
 import com.docker.core.repository.CommonRepository;
 import com.docker.core.repository.Resource;
@@ -25,7 +26,7 @@ import javax.inject.Inject;
  * Created by zhangxindang on 2018/10/19.
  */
 
-public class AccountViewModel extends BaseViewModel {
+public class AccountViewModel extends HivsBaseViewModel {
 
     @Inject
     AccountService service;
@@ -54,7 +55,7 @@ public class AccountViewModel extends BaseViewModel {
 
 
     public void Login(String username, String pwd) {
-        viewEventResouce.setValue(new ViewEventResouce(1, "11111111", 1));
+        mVmEventSouce.setValue(new ViewEventResouce(1, "11111111", 1));
 
         paramlv.setValue(new LoginParam(username, pwd));
     }
@@ -73,7 +74,7 @@ public class AccountViewModel extends BaseViewModel {
 
     public LiveData<Resource<LoginVo>> register(RegisterVo registerVo) {
         registerParm.setValue(registerVo);
-
+        showDialogWait("11111",true);
         return registVo;
 
     }
@@ -97,7 +98,7 @@ public class AccountViewModel extends BaseViewModel {
 
     public void registerqq(RegisterVo input) {
 
-        commonmediatorLiveData.addSource(commonRepository.noneChache(service.register(input.getUsername(), input.getPassword(),
+        mResourceLiveData.addSource(commonRepository.noneChache(service.register(input.getUsername(), input.getPassword(),
                 input.getRepassword())), new NetBoundObserver<>(new NetBoundCallback<LoginVo>() {
 
 
@@ -114,4 +115,8 @@ public class AccountViewModel extends BaseViewModel {
 
     }
 
+    @Override
+    public void initCommand() {
+
+    }
 }

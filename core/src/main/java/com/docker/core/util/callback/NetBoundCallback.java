@@ -24,7 +24,16 @@ public abstract class NetBoundCallback<T> {
     public void onComplete() {
     }
 
-    public abstract void onBusinessError(Resource<T> resource);
+    public void onBusinessError(Resource<T> resource) { }
 
-    public abstract void onNetworkError(Resource<T> resource);
+    ;
+
+    public void onNetworkError(Resource<T> resource) { }
+
+    ;
+
+    public void onLoading() {
+    }
+
+    ;
 }

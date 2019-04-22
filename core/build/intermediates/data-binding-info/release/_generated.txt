@@ -1,2 +1,0 @@
-com.docker.common.databinding.CommonEmptyViewBinding
-android.databinding.DataBindingComponent

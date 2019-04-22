@@ -69,12 +69,6 @@ public abstract class BaseActivity<VM extends BaseViewModel, VB extends ViewData
         }
         mViewModel = getViewModel();
         getLifecycle().addObserver(mViewModel);
-        mViewModel.commonmediatorLiveData.observe(this, new Observer<Object>() {
-            @Override
-            public void onChanged(@Nullable Object o) {
-
-            }
-        });
     }
 
     /*

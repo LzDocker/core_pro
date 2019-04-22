@@ -4,27 +4,26 @@
     xmlns:bind="http://schemas.android.com/tools">
 
     <data>
-          <variable
-              name="viewmodel"
-              type="com.docker.corepro.viewmodel.SimpleViewModel"/>
+        <variable
+            name="viewmodel"
+            type="com.docker.corepro.viewmodel.SimpleViewModel" />
     </data>
 
     <com.scwang.smartrefresh.layout.SmartRefreshLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        bind:onRefreshCommand="@{viewmodel.onrefreshCommand}"
-        bind:onloadmoreCommand="@{viewmodel.onloadmoreCommand}"
-        bind:bdcomplete="@={viewmodel.complete}"
-        bind:srlEnableRefresh="@{viewmodel.enableRefresh}"
-        bind:SrlEnableLoadMore="@{viewmodel.enableLoadmore}"
-        >
+        bind:SrlEnableLoadMore="@{viewmodel.mEnableLoadmore}"
+        bind:bdcomplete="@={viewmodel.mCompleteCommand}"
+        bind:onRefreshCommand="@{viewmodel.mCommand.onrefreshCommand}"
+        bind:onloadmoreCommand="@{viewmodel.mCommand.onloadmoreCommand}"
+        bind:srlEnableRefresh="@{viewmodel.mEnableRefresh}">
 
         <com.docker.common.widget.EmptyLayout
             android:id="@+id/empty"
-            bind:status="@{viewmodel.emptystatus}"
-            bind:onRetryCommand="@{viewmodel.retrycommand}"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            bind:onRetryCommand="@{viewmodel.mCommand.retrycommand}"
+            bind:status="@{viewmodel.mEmptycommand}">
 
             <LinearLayout
                 android:layout_width="match_parent"

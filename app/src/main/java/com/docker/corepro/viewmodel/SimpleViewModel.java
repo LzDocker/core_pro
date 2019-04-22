@@ -1,65 +1,42 @@
 package com.docker.corepro.viewmodel;
-
-import android.arch.lifecycle.Lifecycle;
-import android.arch.lifecycle.OnLifecycleEvent;
-import android.databinding.ObservableBoolean;
-import android.databinding.ObservableInt;
-import android.util.Log;
-
-import com.docker.common.widget.EmptyCommand;
+import com.bfhd.bfsourcelibary.base.HivsBaseViewModel;
 import com.docker.common.widget.EmptyStatus;
-import com.docker.core.base.BaseViewModel;
 import com.docker.core.util.ViewEventResouce;
-import com.scwang.smartrefresh.layout.binding.command.ReplyCommand;
-
 import javax.inject.Inject;
 
-public class SimpleViewModel extends BaseViewModel {
+public class SimpleViewModel extends HivsBaseViewModel {
 
     @Inject
-    public SimpleViewModel() {
+    public SimpleViewModel() { }
 
+
+    @Override
+    public void initCommand() {
+        mCommand.OnRefresh(() -> {   getData();});
+        mCommand.OnLoadMore(() -> {   mEmptycommand.set(EmptyStatus.BdLoading);});
+        mCommand.OnRetryLoad(() -> {  getData(); });
     }
 
-    public final ObservableInt emptystatus = new ObservableInt();
-
-    public final ObservableBoolean enableRefresh = new ObservableBoolean();
-
-    public final ObservableBoolean complete = new ObservableBoolean();
-
-    public final ObservableBoolean enableLoadmore = new ObservableBoolean();
-
-    public final EmptyCommand retrycommand = () -> {
-        getData();
-    };
-
-    public final ReplyCommand onrefreshCommand = () -> {
-        getData();
-    };
-
-    public final ReplyCommand onloadmoreCommand = () -> {
-        getData();
-    };
 
     public void getData() {
-//        emptystatus.set(EmptyStatus.BdHiden);
-        emptystatus.set(EmptyStatus.BdLoading);
+        mEmptycommand.set(EmptyStatus.BdHiden);
     }
 
     @Override
     public void create() {
         super.create();
-        emptystatus.set(EmptyStatus.BdError);
-        enableRefresh.set(false);
-        enableLoadmore.set(true);
+        mEnableRefresh.set(false);
+        mEnableLoadmore.set(true);
+        mVmEventSouce.setValue(new ViewEventResouce(1, "11222111", 1333));
 
-
-        viewEventResouce.setValue(new ViewEventResouce(1, "11222111", 1333));
+        showDialogWait("11111",true);
     }
+
 
     @Override
     protected void onCleared() {
         super.onCleared();
-        Log.d("sss", "onCleared: ---------------");
     }
+
+
 }

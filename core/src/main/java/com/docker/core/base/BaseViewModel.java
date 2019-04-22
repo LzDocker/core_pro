@@ -5,6 +5,8 @@ import android.arch.lifecycle.LifecycleObserver;
 import android.arch.lifecycle.MediatorLiveData;
 import android.arch.lifecycle.OnLifecycleEvent;
 import android.arch.lifecycle.ViewModel;
+import android.databinding.ObservableBoolean;
+import android.databinding.ObservableInt;
 
 import com.docker.core.util.SingleLiveEvent;
 import com.docker.core.util.ViewEventResouce;
@@ -18,6 +20,7 @@ public class BaseViewModel extends ViewModel implements LifecycleObserver {
     public BaseViewModel() {
 
     }
+
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
     public void create() {
     }
@@ -47,10 +50,18 @@ public class BaseViewModel extends ViewModel implements LifecycleObserver {
 
     }
 
-    public final SingleLiveEvent<ViewEventResouce> viewEventResouce = new SingleLiveEvent<>();
+    public final SingleLiveEvent<ViewEventResouce> mVmEventSouce = new SingleLiveEvent<>();
 
-    public SingleLiveEvent<ViewEventResouce> getViewEventResouce(){return  viewEventResouce;}
+    /*
+     * vm--->activity 传递事件
+     * */
+    public SingleLiveEvent<ViewEventResouce> getViewEventResouce() {
+        return mVmEventSouce;
+    }
 
-    public final MediatorLiveData<Object> commonmediatorLiveData = new MediatorLiveData<Object>();
+
+
+
+
 }
 

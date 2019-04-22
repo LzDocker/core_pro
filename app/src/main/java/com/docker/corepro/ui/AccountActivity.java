@@ -22,6 +22,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.bfhd.bfsourcelibary.base.HivsBaseActivity;
 import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.SPUtils;
 import com.blankj.utilcode.util.ToastUtils;
@@ -64,13 +65,12 @@ import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Response;
 
-public class AccountActivity extends BaseActivity<AccountViewModel, ActivityAccountBinding> {
+public class AccountActivity extends HivsBaseActivity<AccountViewModel, ActivityAccountBinding> {
 
 
     @Inject
     ViewModelProvider.Factory factory;
-
-
+    
     @Inject
     MHeader mHeader;
 

@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
 
+import com.bfhd.bfsourcelibary.base.HivsBaseActivity;
 import com.docker.common.adapter.SimpleCommonRecyclerAdapter;
 import com.docker.core.base.BaseActivity;
 import com.docker.core.util.ViewEventResouce;
@@ -21,7 +22,7 @@ import java.util.ArrayList;
 
 import javax.inject.Inject;
 
-public class SimpleActivity extends BaseActivity<SimpleViewModel, ActivitySimpleBinding> {
+public class SimpleActivity extends HivsBaseActivity<SimpleViewModel, ActivitySimpleBinding> {
 
 
     @Inject
@@ -48,6 +49,7 @@ public class SimpleActivity extends BaseActivity<SimpleViewModel, ActivitySimple
         isOverrideContentView = true;
         super.onCreate(savedInstanceState);
         initView();
+
     }
 
     @Override
@@ -60,6 +62,8 @@ public class SimpleActivity extends BaseActivity<SimpleViewModel, ActivitySimple
     }
 
     private void initView(){
+
+//        mViewModel.setEmptyCommand(mEmptycommand);
         mViewModel.getViewEventResouce().observe(this, new Observer<ViewEventResouce>() {
             @Override
             public void onChanged(@Nullable ViewEventResouce viewEventResouce) {
