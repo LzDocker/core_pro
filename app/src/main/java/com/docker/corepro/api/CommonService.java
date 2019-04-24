@@ -5,8 +5,8 @@ import android.arch.persistence.room.Update;
 
 import com.docker.core.di.module.httpmodule.ApiResponse;
 import com.docker.core.di.module.httpmodule.BaseResponse;
+import com.docker.core.util.versioncontrol.vo.UpdateInfo;
 import com.docker.corepro.vo.LoginVo;
-import com.docker.updatelibary.vo.UpdateInfo;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;

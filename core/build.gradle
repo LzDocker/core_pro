@@ -1,5 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'maven'
+apply plugin: 'com.github.dcendents.android-maven'
+group = 'com.github.<LzDocker>'
 
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
@@ -56,33 +58,41 @@ dependencies {
     api rootProject.ext.dependencies["converter-gson"]
     api rootProject.ext.dependencies["lifecycle-runtime"]
     api rootProject.ext.dependencies["lifecycle-extensions"]
+    api rootProject.ext.dependencies["multidex"]
+    api rootProject.ext.dependencies["arouter"]
+    api rootProject.ext.dependencies["util"]
+    api rootProject.ext.dependencies["rxpermissions"]
+    api rootProject.ext.dependencies["rxandroid"]
+    api rootProject.ext.dependencies["rxrelay"]
+    api rootProject.ext.dependencies["rxjava"]
+    api rootProject.ext.dependencies["recyclerview"]
+    api rootProject.ext.dependencies["StatusBar"]
     api rootProject.ext.dependencies["dagger"]
     api rootProject.ext.dependencies["dagger-android"]
     api rootProject.ext.dependencies["dagger-android-support"]
+    api rootProject.ext.dependencies["design"]
     annotationProcessor rootProject.ext.dependencies["room-compiler"]
     annotationProcessor rootProject.ext.dependencies["dagger-android-processor"]
     annotationProcessor rootProject.ext.dependencies["dagger-compiler"]
     annotationProcessor rootProject.ext.dependencies["dagger-android-compiler"]
-    api project(":common")
-//    api 'com.docker.common:common:1.2.0'
 
 }
-uploadArchives {
-    configuration = configurations.archives
-    repositories{
-        mavenDeployer{
-            repository(url: 'http://127.0.0.1:8081/repository/core/') {
-                //你Nexus的账户密码
-                authentication(userName: 'admin', password: 'admin123')
-            }
-            pom.project {
-                version '1.2.2'
-                artifactId 'core'
-                groupId 'com.docker.core'
-                packaging 'aar'
-                description '基础类库层'
-            }
-        }
-    }
-
-}
+//uploadArchives {
+//    configuration = configurations.archives
+//    repositories{
+//        mavenDeployer{
+//            repository(url: 'http://127.0.0.1:8081/repository/core/') {
+//                //你Nexus的账户密码
+//                authentication(userName: 'admin', password: 'admin123')
+//            }
+//            pom.project {
+//                version '1.2.4'
+//                artifactId 'core'
+//                groupId 'com.docker.core'
+//                packaging 'aar'
+//                description '基础类库层'
+//            }
+//        }
+//    }
+//
+//}

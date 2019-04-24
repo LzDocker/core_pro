@@ -78,20 +78,7 @@ dependencies {
     annotationProcessor rootProject.ext.dependencies["dagger-android-compiler"]
     annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
     annotationProcessor rootProject.ext.dependencies["room-compiler"]
-
-//    api project(":updatelibary")
-//    api project(":picture_library")
-//    api project(":refresh-layout")
-//    api project(":common")
-    api project(":bfsourcelibary")
-
-//    println IsBuildMudle.toBoolean()
-//    if (!IsBuildMudle.toBoolean()) {
-////        implementation project(':moduleAccount')
-////        implementation project(':moduleGank')
-////        implementation project(':moduleplayer')
-//    } else {
-////        implementation project(":common")
-//        api project(":core")
-//    }
+    api project(":picture_library")
+    api project(":core")
 }
+

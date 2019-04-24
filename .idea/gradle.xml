@@ -9,13 +9,9 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/bfsourcelibary" />
-            <option value="$PROJECT_DIR$/common" />
             <option value="$PROJECT_DIR$/core" />
             <option value="$PROJECT_DIR$/picture_library" />
-            <option value="$PROJECT_DIR$/refresh-layout" />
             <option value="$PROJECT_DIR$/ucrop" />
-            <option value="$PROJECT_DIR$/updatelibary" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

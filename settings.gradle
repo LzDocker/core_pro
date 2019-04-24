@@ -1,1 +1,1 @@
-include ':app', ':core', ':common', ':updatelibary', ':picture_library', ':ucrop', ':refresh-layout', ':bfsourcelibary'
+include ':app', ':core', ':picture_library', ':ucrop'

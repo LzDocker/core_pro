@@ -20,8 +20,8 @@ import com.docker.core.util.AutoClearedValue;
 
 public abstract class BaseFragment<VM extends BaseViewModel, VB extends ViewDataBinding> extends BaseInjectFragment {
 
-    protected AutoClearedValue<VB> mBinding;
-    protected VM mViewModel;
+    public AutoClearedValue<VB> mBinding;
+    public VM mViewModel;
     private LinearLayout rootView;
 
     public BaseFragment() {

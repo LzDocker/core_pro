@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "/Users/zhangxindang/bf_workspace/corepro/core/build/intermediates/res/merged/debug/interpolator-v21/mtrl_fast_out_linear_in.xml",
+        "source": "/Users/zhangxindang/.gradle/caches/transforms-1/files-1.1/design-28.0.0.aar/390fc95a2aef7c1b276991e2b17cc9cb/res/interpolator-v21/mtrl_fast_out_linear_in.xml"
+    },
+    {
+        "merged": "/Users/zhangxindang/bf_workspace/corepro/core/build/intermediates/res/merged/debug/interpolator-v21/mtrl_linear_out_slow_in.xml",
+        "source": "/Users/zhangxindang/.gradle/caches/transforms-1/files-1.1/design-28.0.0.aar/390fc95a2aef7c1b276991e2b17cc9cb/res/interpolator-v21/mtrl_linear_out_slow_in.xml"
+    },
+    {
+        "merged": "/Users/zhangxindang/bf_workspace/corepro/core/build/intermediates/res/merged/debug/interpolator-v21/mtrl_fast_out_slow_in.xml",
+        "source": "/Users/zhangxindang/.gradle/caches/transforms-1/files-1.1/design-28.0.0.aar/390fc95a2aef7c1b276991e2b17cc9cb/res/interpolator-v21/mtrl_fast_out_slow_in.xml"
+    }
+]

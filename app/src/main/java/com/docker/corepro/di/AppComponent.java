@@ -8,7 +8,7 @@ import com.docker.core.di.module.cachemodule.CacheModule;
 import com.docker.core.di.module.httpmodule.CommonServiceModule;
 import com.docker.core.di.module.httpmodule.GlobalConfigModule;
 import com.docker.core.di.module.httpmodule.HttpClientModule;
-import com.docker.updatelibary.versioncontroler.UpdateServiceMoudle;
+import com.docker.core.util.versioncontrol.UpdateServiceMoudle;
 import com.google.gson.Gson;
 
 import javax.inject.Singleton;

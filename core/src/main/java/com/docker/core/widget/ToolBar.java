@@ -36,7 +36,6 @@ public class ToolBar {
             if (this.mTvTitle != null) {
                 this.mTvTitle.setTextColor(-1);
             }
-
             if (this.mTvRight != null) {
                 this.mTvRight.setTextColor(-1);
             }

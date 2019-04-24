@@ -2,20 +2,19 @@ package com.docker.corepro;
 
 import android.content.Context;
 
-import com.docker.common.widget.EmptyLayout;
 import com.docker.core.base.BaseApplication;
 import com.docker.core.di.module.httpmodule.GlobalConfigModule;
 import com.docker.core.di.module.httpmodule.HttpRequestHandler;
+import com.docker.core.widget.refresh.SmartRefreshLayout;
+import com.docker.core.widget.refresh.api.DefaultRefreshFooterCreator;
+import com.docker.core.widget.refresh.api.DefaultRefreshHeaderCreator;
+import com.docker.core.widget.refresh.api.RefreshFooter;
+import com.docker.core.widget.refresh.api.RefreshHeader;
+import com.docker.core.widget.refresh.api.RefreshLayout;
+import com.docker.core.widget.refresh.footer.ClassicsFooter;
+import com.docker.core.widget.refresh.header.ClassicsHeader;
 import com.docker.corepro.api.ServiceConfig;
 import com.docker.corepro.di.DaggerAppComponent;
-import com.scwang.smartrefresh.layout.SmartRefreshLayout;
-import com.scwang.smartrefresh.layout.api.DefaultRefreshFooterCreator;
-import com.scwang.smartrefresh.layout.api.DefaultRefreshHeaderCreator;
-import com.scwang.smartrefresh.layout.api.RefreshFooter;
-import com.scwang.smartrefresh.layout.api.RefreshHeader;
-import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
-import com.scwang.smartrefresh.layout.header.ClassicsHeader;
 
 import okhttp3.Interceptor;
 import okhttp3.Request;

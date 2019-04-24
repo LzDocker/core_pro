@@ -11,12 +11,11 @@ import com.docker.core.di.module.httpmodule.BaseResponse;
 import com.docker.core.repository.NetworkBoundResourceAuto;
 import com.docker.core.repository.Resource;
 import com.docker.core.util.AppExecutors;
+import com.docker.core.util.versioncontrol.vo.UpdateInfo;
 import com.docker.corepro.api.AccountService;
 import com.docker.corepro.api.CommonService;
 import com.docker.corepro.vo.LoginVo;
 import com.docker.corepro.vo.SpecLoginVo;
-import com.docker.updatelibary.vo.UpdateInfo;
-
 import javax.inject.Inject;
 import javax.inject.Singleton;
 

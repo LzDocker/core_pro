@@ -5,20 +5,19 @@ import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.Transformations;
 
-import com.bfhd.bfsourcelibary.base.HivsBaseViewModel;
-import com.docker.core.base.BaseViewModel;
+import com.docker.core.base.basehivs.HivsBaseViewModel;
 import com.docker.core.repository.CommonRepository;
 import com.docker.core.repository.Resource;
 import com.docker.core.util.ViewEventResouce;
 import com.docker.core.util.callback.NetBoundCallback;
 import com.docker.core.util.callback.NetBoundObserver;
+import com.docker.core.util.versioncontrol.vo.UpdateInfo;
 import com.docker.corepro.api.AccountService;
 import com.docker.corepro.repository.AccountRepository;
 import com.docker.corepro.vo.LoginParam;
 import com.docker.corepro.vo.LoginVo;
 import com.docker.corepro.vo.RegisterVo;
 import com.docker.corepro.vo.SpecLoginVo;
-import com.docker.updatelibary.vo.UpdateInfo;
 
 import javax.inject.Inject;
 
@@ -74,7 +73,7 @@ public class AccountViewModel extends HivsBaseViewModel {
 
     public LiveData<Resource<LoginVo>> register(RegisterVo registerVo) {
         registerParm.setValue(registerVo);
-        showDialogWait("11111",true);
+        showDialogWait("11111", true);
         return registVo;
 
     }

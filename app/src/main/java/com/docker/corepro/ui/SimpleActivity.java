@@ -8,9 +8,8 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
 
-import com.bfhd.bfsourcelibary.base.HivsBaseActivity;
-import com.docker.common.adapter.SimpleCommonRecyclerAdapter;
-import com.docker.core.base.BaseActivity;
+import com.docker.core.adapter.SimpleCommonRecyclerAdapter;
+import com.docker.core.base.basehivs.HivsBaseActivity;
 import com.docker.core.util.ViewEventResouce;
 import com.docker.corepro.BR;
 import com.docker.corepro.R;

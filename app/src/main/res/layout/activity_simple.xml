@@ -4,12 +4,13 @@
     xmlns:bind="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewmodel"
             type="com.docker.corepro.viewmodel.SimpleViewModel" />
     </data>
 
-    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+    <com.docker.core.widget.refresh.SmartRefreshLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         bind:SrlEnableLoadMore="@{viewmodel.mEnableLoadmore}"
@@ -18,7 +19,7 @@
         bind:onloadmoreCommand="@{viewmodel.mCommand.onloadmoreCommand}"
         bind:srlEnableRefresh="@{viewmodel.mEnableRefresh}">
 
-        <com.docker.common.widget.EmptyLayout
+        <com.docker.core.widget.emptylayout.EmptyLayout
             android:id="@+id/empty"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -34,8 +35,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
                     android:scaleType="centerCrop"
-                    app:imageUrl="@{viewmodel.img}"
-                    android:src="@drawable/test" />
+                    android:src="@drawable/test"
+                    app:imageUrl="@{viewmodel.img}" />
 
 
                 <View
@@ -53,10 +54,9 @@
 
             </LinearLayout>
 
+        </com.docker.core.widget.emptylayout.EmptyLayout>
 
-        </com.docker.common.widget.EmptyLayout>
-
-    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+    </com.docker.core.widget.refresh.SmartRefreshLayout>
 
 
 </layout>

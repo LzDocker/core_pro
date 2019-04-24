@@ -1,7 +1,8 @@
 package com.docker.corepro.viewmodel;
-import com.bfhd.bfsourcelibary.base.HivsBaseViewModel;
-import com.docker.common.widget.EmptyStatus;
+import com.docker.core.base.basehivs.HivsBaseViewModel;
 import com.docker.core.util.ViewEventResouce;
+import com.docker.core.widget.emptylayout.EmptyStatus;
+
 import javax.inject.Inject;
 
 public class SimpleViewModel extends HivsBaseViewModel {
