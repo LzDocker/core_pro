@@ -4,7 +4,7 @@
             "outputFile": "/Users/zhangxindang/bf_workspace/corepro/core/build/intermediates/res/merged/debug/values-v23/values-v23.xml",
             "map": [
                 {
-                    "source": "/Users/zhangxindang/.gradle/caches/transforms-1/files-1.1/cardview-v7-28.0.0.aar/02c06c79b909ef0398ee14a15ece1cf6/res/values-v23/values-v23.xml",
+                    "source": "/Users/zhangxindang/.gradle/caches/transforms-1/files-1.1/cardview-v7-28.0.0.aar/810c3f5ff1667c1edb0ecb7c51c945b4/res/values-v23/values-v23.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -23,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "/Users/zhangxindang/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/817eb0c4c2902775fd04ada2696e69f2/res/values-v23/values-v23.xml",
+                    "source": "/Users/zhangxindang/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/efc37bca5c846c97eb9c149cc018bd8a/res/values-v23/values-v23.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,19,32,33,34,35,36",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4",
@@ -39,7 +39,7 @@
             "outputFile": "/Users/zhangxindang/bf_workspace/corepro/core/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v23/values-v23.xml",
             "map": [
                 {
-                    "source": "/Users/zhangxindang/.gradle/caches/transforms-1/files-1.1/cardview-v7-28.0.0.aar/02c06c79b909ef0398ee14a15ece1cf6/res/values-v23/values-v23.xml",
+                    "source": "/Users/zhangxindang/.gradle/caches/transforms-1/files-1.1/cardview-v7-28.0.0.aar/810c3f5ff1667c1edb0ecb7c51c945b4/res/values-v23/values-v23.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -58,7 +58,7 @@
                     }
                 },
                 {
-                    "source": "/Users/zhangxindang/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/817eb0c4c2902775fd04ada2696e69f2/res/values-v23/values-v23.xml",
+                    "source": "/Users/zhangxindang/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/efc37bca5c846c97eb9c149cc018bd8a/res/values-v23/values-v23.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,19,32,33,34,35,36",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4",

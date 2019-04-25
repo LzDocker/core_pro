@@ -55,7 +55,7 @@ uploadArchives {
                 authentication(userName: 'admin', password: 'admin123')
             }
             pom.project {
-                version '1.2.1'
+                version '1.2.2'
                 artifactId 'ucrop'
                 groupId 'com.docker.ucrop'
                 packaging 'aar'

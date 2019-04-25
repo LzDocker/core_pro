@@ -42,8 +42,8 @@ dependencies {
     testImplementation rootProject.ext.dependencies["junit"]
     api rootProject.ext.dependencies["rxjava"]
     api rootProject.ext.dependencies["rxandroid"]
-    api project(":ucrop")
-//    api 'com.docker.ucrop:ucrop:1.2.1'
+//    api project(":ucrop")
+    api 'com.docker.ucrop:ucrop:1.2.2'
 }
 uploadArchives {
     configuration = configurations.archives

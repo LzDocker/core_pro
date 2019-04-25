@@ -77,9 +77,10 @@ public abstract class BaseApplication extends MultiDexApplication implements Has
     @RequiresApi(api = Build.VERSION_CODES.ICE_CREAM_SANDWICH)
     protected void initRouter() {
         if (BuildConfig.DEBUG) {
-            ARouter.openLog();
-            ARouter.openDebug();
+
         }
+        ARouter.openLog();
+        ARouter.openDebug();
         ARouter.init(this);
     }
 

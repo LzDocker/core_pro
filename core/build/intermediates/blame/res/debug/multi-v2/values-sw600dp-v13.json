@@ -4,7 +4,7 @@
             "outputFile": "/Users/zhangxindang/bf_workspace/corepro/core/build/intermediates/incremental/mergeDebugResources/merged.dir/values-sw600dp-v13/values-sw600dp-v13.xml",
             "map": [
                 {
-                    "source": "/Users/zhangxindang/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/817eb0c4c2902775fd04ada2696e69f2/res/values-sw600dp-v13/values-sw600dp-v13.xml",
+                    "source": "/Users/zhangxindang/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/efc37bca5c846c97eb9c149cc018bd8a/res/values-sw600dp-v13/values-sw600dp-v13.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "/Users/zhangxindang/.gradle/caches/transforms-1/files-1.1/design-28.0.0.aar/390fc95a2aef7c1b276991e2b17cc9cb/res/values-sw600dp-v13/values-sw600dp-v13.xml",
+                    "source": "/Users/zhangxindang/.gradle/caches/transforms-1/files-1.1/design-28.0.0.aar/572382fe7c0d3acf8fab38d234956b1e/res/values-sw600dp-v13/values-sw600dp-v13.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,10,11,12",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4",
@@ -38,7 +38,7 @@
             "outputFile": "/Users/zhangxindang/bf_workspace/corepro/core/build/intermediates/res/merged/debug/values-sw600dp-v13/values-sw600dp-v13.xml",
             "map": [
                 {
-                    "source": "/Users/zhangxindang/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/817eb0c4c2902775fd04ada2696e69f2/res/values-sw600dp-v13/values-sw600dp-v13.xml",
+                    "source": "/Users/zhangxindang/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/efc37bca5c846c97eb9c149cc018bd8a/res/values-sw600dp-v13/values-sw600dp-v13.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",
@@ -48,7 +48,7 @@
                     }
                 },
                 {
-                    "source": "/Users/zhangxindang/.gradle/caches/transforms-1/files-1.1/design-28.0.0.aar/390fc95a2aef7c1b276991e2b17cc9cb/res/values-sw600dp-v13/values-sw600dp-v13.xml",
+                    "source": "/Users/zhangxindang/.gradle/caches/transforms-1/files-1.1/design-28.0.0.aar/572382fe7c0d3acf8fab38d234956b1e/res/values-sw600dp-v13/values-sw600dp-v13.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,10,11,12",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4",
