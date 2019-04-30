@@ -101,7 +101,7 @@ public class BindingRecyclerViewAdapter<T> extends RecyclerView.Adapter<Recycler
             }
         }
         this.items = items;
-        notifyDataSetChanged();
+//        notifyDataSetChanged();
     }
 
     @Override
