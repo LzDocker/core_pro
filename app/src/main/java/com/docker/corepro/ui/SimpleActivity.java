@@ -60,7 +60,7 @@ public class SimpleActivity extends HivsBaseActivity<SimpleViewModel, ActivitySi
                 .init();
     }
 
-    private void initView(){
+    public void initView(){
 
 //        mViewModel.setEmptyCommand(mEmptycommand);
         mViewModel.getViewEventResouce().observe(this, new Observer<ViewEventResouce>() {

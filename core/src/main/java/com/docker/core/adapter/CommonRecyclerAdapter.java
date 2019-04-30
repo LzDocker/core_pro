@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.docker.core.R;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -45,6 +47,11 @@ public abstract class CommonRecyclerAdapter<T, H extends CommonRecyclerAdapter.V
         }
     }
 
+    @Override
+    public int getItemViewType(int position) {
+        return super.getItemViewType(position);
+
+    }
 
     @Override
     public H onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -78,6 +85,7 @@ public abstract class CommonRecyclerAdapter<T, H extends CommonRecyclerAdapter.V
 
     public static class ViewHolder<B extends ViewDataBinding> extends RecyclerView.ViewHolder {
         private SimpleCommonRecyclerAdapter.OnItemClickListener onItemClickListener;
+        private OnchildViewClickListener onchildViewClickListener;
 
         private B binding;
 
@@ -100,6 +108,17 @@ public abstract class CommonRecyclerAdapter<T, H extends CommonRecyclerAdapter.V
             if (onItemClickListener != null) {
                 itemView.setOnClickListener(v -> {
                     onItemClickListener.onItemClick(v, getAdapterPosition());
+                });
+            }
+        }
+
+        public ViewHolder(View itemView, int viewid, OnchildViewClickListener onchildViewClickListener) {
+            super(itemView);
+            this.onchildViewClickListener = onchildViewClickListener;
+            if (onchildViewClickListener != null) {
+                View childview = itemView.findViewById(viewid);
+                childview.setOnClickListener(v -> {
+                    onchildViewClickListener.onChildCiewCilck(v, getAdapterPosition());
                 });
             }
         }
