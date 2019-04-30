@@ -112,14 +112,14 @@ public abstract class CommonRecyclerAdapter<T, H extends CommonRecyclerAdapter.V
             }
         }
 
-        public ViewHolder(View itemView, int viewid, OnchildViewClickListener onchildViewClickListener) {
+        public ViewHolder(View itemView, int[] ids, OnchildViewClickListener onchildViewClickListener) {
             super(itemView);
             this.onchildViewClickListener = onchildViewClickListener;
-            if (onchildViewClickListener != null) {
-                View childview = itemView.findViewById(viewid);
-                childview.setOnClickListener(v -> {
-                    onchildViewClickListener.onChildCiewCilck(v, getAdapterPosition());
-                });
+            for (int i = 0; i <ids.length ; i++) {
+                if (onchildViewClickListener != null) {
+                    View childview = itemView.findViewById(ids[i]);
+                    childview.setOnClickListener(v -> onchildViewClickListener.onChildCiewCilck(v, ViewHolder.this.getAdapterPosition()));
+                }
             }
         }
     }
