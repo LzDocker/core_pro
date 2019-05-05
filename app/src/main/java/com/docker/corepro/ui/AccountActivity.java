@@ -154,6 +154,11 @@ public class AccountActivity extends HivsBaseActivity<AccountViewModel, Activity
 //        mBinding.empty.showNoData();
     }
 
+    @Override
+    public void initView() {
+
+    }
+
     private void initEnviron() {
         environmentManager.bind(this, this, new String[]{"测试", "线上"}, new String[]{ServiceConfig.SERVER_URL_TEST, ServiceConfig.SERVER_URL_PRO}, ServiceConfig.SERVER_URL_PRO);
 

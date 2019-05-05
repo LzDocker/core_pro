@@ -101,9 +101,7 @@ public class BindingRecyclerViewAdapter<T> extends RecyclerView.Adapter<Recycler
             }
         }
         this.items = items;
-//        notifyDataSetChanged();
     }
-
     @Override
     public int getItemCount() {
         return items == null ? 0 : items.size();

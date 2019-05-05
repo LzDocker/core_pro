@@ -1,6 +1,9 @@
 package com.docker.corepro;
 
 import android.content.Context;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+import android.util.Log;
 
 import com.docker.core.base.BaseApplication;
 import com.docker.core.di.module.httpmodule.GlobalConfigModule;

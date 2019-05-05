@@ -20,9 +20,10 @@ public class BindingAdapters {
         if (items != null) adapter.setItems(items);
         if (animator != null) recyclerView.setItemAnimator(animator);
         if (decor != null) recyclerView.addItemDecoration(decor);
-        recyclerView.setAdapter(adapter);
+        if(recyclerView.getAdapter()==null){
+            recyclerView.setAdapter(adapter);
+        }
     }
-
     @BindingAdapter("layoutManager")
     public static void setLayoutManager(RecyclerView recyclerView, LayoutManager.LayoutManagerFactory layoutManagerFactory) {
         recyclerView.setLayoutManager(layoutManagerFactory.create(recyclerView));
