@@ -5,9 +5,12 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.docker.core.base.BaseActivity;
+import com.docker.core.util.Empty;
 import com.docker.core.util.ViewEventResouce;
 import com.docker.core.widget.dialog.WaitDialog;
 import com.gyf.barlibrary.ImmersionBar;
+
+import javax.inject.Inject;
 
 public abstract class HivsBaseActivity<VM extends HivsBaseViewModel, VB extends ViewDataBinding> extends BaseActivity<VM, VB> {
 
@@ -20,6 +23,8 @@ public abstract class HivsBaseActivity<VM extends HivsBaseViewModel, VB extends 
         initView();
     }
 
+    @Inject
+    Empty empty;
     public void initBasicListener() {
         mViewModel.mResourceLiveData.observe(this, o -> {
         });
