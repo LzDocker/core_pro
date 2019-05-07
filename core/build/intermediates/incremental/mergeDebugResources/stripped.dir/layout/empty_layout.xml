@@ -6,13 +6,14 @@
     <LinearLayout
         android:id="@+id/common_empty_coutainer"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
         android:orientation="vertical" android:tag="layout/empty_layout_0" xmlns:android="http://schemas.android.com/apk/res/android">
 
         <LinearLayout
             android:id="@+id/common_loading_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -51,11 +52,12 @@
 
         <LinearLayout
             android:id="@+id/common_empty_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:visibility="gone">
+            android:layout_marginTop="30dp"
+            android:visibility="gone"
+            >
 
             <ImageView
                 android:id="@+id/common_iv_nodata"
@@ -79,15 +81,16 @@
 
         <LinearLayout
             android:id="@+id/common_err_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
             android:orientation="vertical"
-            android:visibility="gone">
+            android:visibility="gone"
+            >
 
             <ImageView
                 android:id="@+id/common_iv_error"
-                android:layout_width="100dp"
+                android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:layout_gravity="center_horizontal"
                 android:src="@drawable/icon_error_r" />
@@ -97,10 +100,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
+                android:textSize="12sp"
                 android:background="@drawable/common_bg_blue"
-                android:padding="10dp"
+                android:padding="8dp"
                 android:text="网络问题，请点击重试"
-                android:textColor="#666" />
+                android:textColor="#333" />
         </LinearLayout>
     </LinearLayout>
          

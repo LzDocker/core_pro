@@ -9,9 +9,11 @@ import android.databinding.InverseBindingListener;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
 import com.docker.core.databinding.EmptyLayoutBinding;
 import com.docker.core.R;
 
@@ -74,7 +76,7 @@ public class EmptyLayout extends LinearLayout {
     }
 
     public void showLoading() {
-        mbinding.commonEmptyCoutainer.setBackgroundColor(getResources().getColor(R.color.common_white));
+        this.setBackgroundColor(getResources().getColor(R.color.common_white));
         for (int i = 0; i < this.getChildCount(); i++) {
             if (this.getChildAt(i) == mbinding.commonEmptyCoutainer) {
                 this.getChildAt(i).setVisibility(VISIBLE);
@@ -93,7 +95,7 @@ public class EmptyLayout extends LinearLayout {
     }
 
     public void showError() {
-        mbinding.commonEmptyCoutainer.setBackgroundColor(getResources().getColor(R.color.common_bg));
+        this.setBackgroundColor(getResources().getColor(R.color.common_bg));
         for (int i = 0; i < this.getChildCount(); i++) {
             if (this.getChildAt(i) == mbinding.commonEmptyCoutainer) {
                 this.getChildAt(i).setVisibility(VISIBLE);
@@ -116,7 +118,7 @@ public class EmptyLayout extends LinearLayout {
     }
 
     public void showNoData() {
-        mbinding.commonEmptyCoutainer.setBackgroundColor(getResources().getColor(R.color.common_bg));
+        this.setBackgroundColor(getResources().getColor(R.color.common_bg));
         for (int i = 0; i < this.getChildCount(); i++) {
             if (this.getChildAt(i) == mbinding.commonEmptyCoutainer) {
                 this.getChildAt(i).setVisibility(VISIBLE);
