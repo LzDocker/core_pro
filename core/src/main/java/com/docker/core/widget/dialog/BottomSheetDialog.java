@@ -32,6 +32,7 @@ public class BottomSheetDialog extends DialogFragment {
     public void setDataCallback(String[] strs, ChooseCallback chooseCallback) {
         items = strs;
         this.chooseCallback = chooseCallback;
+        stringSimpleCommonRecyclerAdapter.clear();
         stringSimpleCommonRecyclerAdapter.add(items);
         stringSimpleCommonRecyclerAdapter.notifyDataSetChanged();
     }

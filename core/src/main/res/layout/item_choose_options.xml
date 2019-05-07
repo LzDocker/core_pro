@@ -21,13 +21,12 @@
             android:layout_height="50dp"
             android:gravity="center"
             android:text="@{item}"
-            android:textColor="#000000"
             android:textSize="17dp" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="0.2dp"
-            android:background="@color/common_grey" />
+            android:background="#ffeeeeee" />
 
     </LinearLayout>
 </layout>
