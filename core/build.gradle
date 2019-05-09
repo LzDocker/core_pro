@@ -75,6 +75,7 @@ dependencies {
     annotationProcessor rootProject.ext.dependencies["dagger-android-processor"]
     annotationProcessor rootProject.ext.dependencies["dagger-compiler"]
     annotationProcessor rootProject.ext.dependencies["dagger-android-compiler"]
+    annotationProcessor rootProject.ext.dependencies["glide-compiler"]
 
 }
 //uploadArchives {
