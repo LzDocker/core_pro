@@ -44,6 +44,7 @@ public abstract class HivsBaseViewModel extends BaseViewModel {
 
     public BaseCommand mCommand = new BaseCommand();
 
+    public boolean mIsfirstLoad = true;
 
     public void showDialogWait(String message, boolean cancelable) {
         mVmEventSouce.setValue(new ViewEventResouce(101, message, cancelable));
