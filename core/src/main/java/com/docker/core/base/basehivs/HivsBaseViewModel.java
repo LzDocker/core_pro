@@ -9,6 +9,7 @@ import android.databinding.ObservableInt;
 import com.docker.core.base.BaseViewModel;
 import com.docker.core.binding.command.BaseCommand;
 import com.docker.core.util.ViewEventResouce;
+import com.docker.core.widget.emptylayout.EmptyStatus;
 
 public abstract class HivsBaseViewModel extends BaseViewModel {
 
@@ -16,7 +17,7 @@ public abstract class HivsBaseViewModel extends BaseViewModel {
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
     public void create() {
         initCommand();
-
+        mEmptycommand.set(EmptyStatus.BdLoading);
     }
 
     public abstract void initCommand();
