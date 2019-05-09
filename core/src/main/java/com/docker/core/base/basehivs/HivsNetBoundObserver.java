@@ -6,7 +6,7 @@ import com.docker.core.repository.Resource;
 import com.docker.core.util.callback.NetBoundCallback;
 import com.docker.core.widget.emptylayout.EmptyStatus;
 
-public abstract class HivsNetBoundObserver<T> implements android.arch.lifecycle.Observer<Resource<T>> {
+public  class HivsNetBoundObserver<T> implements android.arch.lifecycle.Observer<Resource<T>> {
 
 
     public HivsBaseViewModel baseViewModel;
@@ -39,7 +39,7 @@ public abstract class HivsNetBoundObserver<T> implements android.arch.lifecycle.
                 } else {
                     netBoundCallback.onLoading();
                     if (baseViewModel != null && baseViewModel.mPage == 1) {
-                        baseViewModel.mEmptycommand.set(EmptyStatus.BdLoading);
+//                        baseViewModel.mEmptycommand.set(EmptyStatus.BdLoading);
                         baseViewModel.mCompleteCommand.set(false);
                         baseViewModel.mEnableLoadmore.set(false);
                         baseViewModel.mEnableRefresh.set(false);

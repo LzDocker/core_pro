@@ -1,6 +1,7 @@
 package com.docker.core.util.callback;
 
 
+import com.blankj.utilcode.util.ToastUtils;
 import com.docker.core.repository.Resource;
 
 /**
@@ -24,11 +25,18 @@ public abstract class NetBoundCallback<T> {
     public void onComplete() {
     }
 
-    public void onBusinessError(Resource<T> resource) { }
+    public void onBusinessError(Resource<T> resource) {
+        if(resource.message!=null){
+            ToastUtils.showShort(resource.message);
+        }
 
-    ;
+    };
 
-    public void onNetworkError(Resource<T> resource) { }
+    public void onNetworkError(Resource<T> resource) {
+        if(resource.message!=null){
+            ToastUtils.showShort(resource.message);
+        }
+    }
 
     ;
 
