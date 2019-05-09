@@ -41,8 +41,6 @@ public class HivsNetBoundObserver<T> implements android.arch.lifecycle.Observer<
                     if (baseViewModel != null && baseViewModel.mPage == 1) {
                         if (baseViewModel.mIsfirstLoad) {
                             baseViewModel.mEmptycommand.set(EmptyStatus.BdLoading);
-                        }else{
-                            baseViewModel.mEmptycommand.set(EmptyStatus.BdHiden);
                         }
                         baseViewModel.mCompleteCommand.set(false);
                         baseViewModel.mEnableLoadmore.set(false);
