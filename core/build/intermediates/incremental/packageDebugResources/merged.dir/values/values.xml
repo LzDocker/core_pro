@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="http://schemas.android.com/tools">
+    <attr format="enum" name="layout_srlSpinnerStyle">
+        <enum name="Translate" value="0"/><!--平行移动-->
+        <enum name="Scale" value="1"/><!--拉伸形变-->
+        <enum name="FixedBehind" value="2"/><!--固定在背后-->
+        <enum name="FixedFront" value="3"/><!--固定在前面-->
+        <enum name="MatchLayout" value="4"/><!--填满布局-->
+    </attr>
+    <attr format="color" name="srlAccentColor"/>
+    <attr format="enum" name="srlClassicsSpinnerStyle">
+        <enum name="Translate" value="0"/><!--平行移动-->
+        <enum name="Scale" value="1"/><!--拉伸形变-->
+        <enum name="FixedBehind" value="2"/><!--固定在背后-->
+    </attr>
+    <attr format="reference" name="srlDrawableArrow"/>
+    <attr format="dimension" name="srlDrawableArrowSize"/>
+    <attr format="dimension" name="srlDrawableMarginRight"/>
+    <attr format="reference" name="srlDrawableProgress"/>
+    <attr format="dimension" name="srlDrawableProgressSize"/>
+    <attr format="dimension" name="srlDrawableSize"/>
+    <attr format="boolean" name="srlEnableHorizontalDrag"/>
+    <attr format="integer" name="srlFinishDuration"/>
+    <attr format="color" name="srlPrimaryColor"/>
+    <attr format="string" name="srlTextFailed"/>
+    <attr format="string" name="srlTextFinish"/>
+    <attr format="string" name="srlTextLoading"/>
+    <attr format="string" name="srlTextNothing"/>
+    <attr format="string" name="srlTextPulling"/>
+    <attr format="string" name="srlTextRefreshing"/>
+    <attr format="string" name="srlTextRelease"/>
+    <attr format="string" name="srlTextSecondary"/>
+    <attr format="dimension" name="srlTextSizeTime"/>
+    <attr format="dimension" name="srlTextSizeTitle"/>
+    <attr format="string" name="srlTextUpdate"/>
+    <color name="colorAccent">#D81B60</color>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="common_bg">#FAFAFA</color>
+    <color name="common_grey">#999999</color>
+    <color name="common_white">#ffffff</color>
+    <declare-styleable name="BallPulseFooter">
+        <attr name="srlClassicsSpinnerStyle"/>
+        <attr format="color" name="srlAnimatingColor"/>
+        <attr format="color" name="srlNormalColor"/>
+    </declare-styleable>
+    <declare-styleable name="BezierRadarHeader">
+        <attr name="srlPrimaryColor"/>
+        <attr name="srlAccentColor"/>
+        <attr name="srlEnableHorizontalDrag"/>
+    </declare-styleable>
+    <declare-styleable name="ClassicsFooter">
+        <attr name="srlClassicsSpinnerStyle"/>
+        <attr name="srlPrimaryColor"/>
+        <attr name="srlAccentColor"/>
+        <attr name="srlFinishDuration"/>
+        <attr name="srlTextSizeTitle"/>
+        <attr name="srlDrawableArrow"/>
+        <attr name="srlDrawableProgress"/>
+        <attr name="srlDrawableMarginRight"/>
+        <attr name="srlDrawableSize"/>
+        <attr name="srlDrawableArrowSize"/>
+        <attr name="srlDrawableProgressSize"/>
+
+        <attr name="srlTextPulling"/>
+        <attr name="srlTextRelease"/>
+        <attr name="srlTextLoading"/>
+        <attr name="srlTextRefreshing"/>
+        <attr name="srlTextFinish"/>
+        <attr name="srlTextFailed"/>
+        <attr name="srlTextNothing"/>
+
+    </declare-styleable>
+    <declare-styleable name="ClassicsHeader">
+        <attr name="srlClassicsSpinnerStyle"/>
+        <attr name="srlPrimaryColor"/>
+        <attr name="srlAccentColor"/>
+        <attr name="srlFinishDuration"/>
+        <attr name="srlDrawableArrow"/>
+        <attr name="srlDrawableProgress"/>
+        <attr name="srlDrawableMarginRight"/>
+        <attr name="srlDrawableSize"/>
+        <attr name="srlDrawableArrowSize"/>
+        <attr name="srlDrawableProgressSize"/>
+        <attr name="srlTextSizeTitle"/>
+        <attr name="srlTextSizeTime"/>
+        <attr format="dimension" name="srlTextTimeMarginTop"/>
+        <attr format="boolean" name="srlEnableLastTime"/>
+
+        <attr name="srlTextPulling"/>
+        <attr name="srlTextLoading"/>
+        <attr name="srlTextRelease"/>
+        <attr name="srlTextFinish"/>
+        <attr name="srlTextFailed"/>
+        <attr name="srlTextUpdate"/>
+        <attr name="srlTextSecondary"/>
+        <attr name="srlTextRefreshing"/>
+
+    </declare-styleable>
+    <declare-styleable name="SmartRefreshLayout">
+        <attr name="srlPrimaryColor"/>
+        <attr name="srlAccentColor"/>
+        <attr format="integer" name="srlReboundDuration"/>
+        <attr format="dimension" name="srlHeaderHeight"/>
+        <attr format="dimension" name="srlFooterHeight"/>
+        <attr format="dimension" name="srlHeaderInsetStart"/>
+        <attr format="dimension" name="srlFooterInsetStart"/>
+        <attr format="float" name="srlDragRate"/>
+        <attr format="float" name="srlHeaderMaxDragRate"/>
+        <attr format="float" name="srlFooterMaxDragRate"/>
+        <attr format="float" name="srlHeaderTriggerRate"/>
+        <attr format="float" name="srlFooterTriggerRate"/>
+        <attr format="boolean" name="srlEnableRefresh"/>
+        <attr format="boolean" name="srlEnableLoadMore"/>
+        <attr format="boolean" name="srlEnableHeaderTranslationContent"/>
+        <attr format="boolean" name="srlEnableFooterTranslationContent"/>
+        <attr format="reference" name="srlHeaderTranslationViewId"/>
+        <attr format="reference" name="srlFooterTranslationViewId"/>
+        <attr format="boolean" name="srlEnablePreviewInEditMode"/>
+        <attr format="boolean" name="srlEnableAutoLoadMore"/>
+        <attr format="boolean" name="srlEnableOverScrollBounce"/>
+        <attr format="boolean" name="srlEnablePureScrollMode"/>
+        <attr format="boolean" name="srlEnableNestedScrolling"/>
+        <attr format="boolean" name="srlEnableScrollContentWhenLoaded"/>
+        <attr format="boolean" name="srlEnableScrollContentWhenRefreshed"/>
+        <attr format="boolean" name="srlEnableLoadMoreWhenContentNotFull"/>
+        <attr format="boolean" name="srlEnableFooterFollowWhenLoadFinished"/>
+        <attr format="boolean" name="srlEnableFooterFollowWhenNoMoreData"/>
+        <attr format="boolean" name="srlEnableClipHeaderWhenFixedBehind"/>
+        <attr format="boolean" name="srlEnableClipFooterWhenFixedBehind"/>
+        <attr format="boolean" name="srlEnableOverScrollDrag"/>
+        <!--<attr name="srlEnableNestedScrollingOnly" format="boolean"/>-->
+        <attr format="boolean" name="srlDisableContentWhenRefresh"/>
+        <attr format="boolean" name="srlDisableContentWhenLoading"/>
+        <attr format="reference" name="srlFixedHeaderViewId"/>
+        <attr format="reference" name="srlFixedFooterViewId"/>
+
+        <attr format="boolean" name="bdcomplete"/>
+
+    </declare-styleable>
+    <declare-styleable name="SmartRefreshLayout_Layout">
+        <attr name="layout_srlSpinnerStyle"/>
+        <attr format="color" name="layout_srlBackgroundColor"/>
+    </declare-styleable>
+    <declare-styleable name="TwoLevelHeader">
+        <attr format="float" name="srlMaxRage"/>
+        <attr format="float" name="srlFloorRage"/>
+        <attr format="float" name="srlRefreshRage"/>
+        <attr format="integer" name="srlFloorDuration"/>
+        <attr format="boolean" name="srlEnableTwoLevel"/>
+        <attr format="boolean" name="srlEnablePullToCloseTwoLevel"/>
+    </declare-styleable>
+    <declare-styleable name="empty_layout" ns1:ignore="MissingDefaultResource">
+        <attr format="enum" name="status">
+            <enum name="BdError" value="0"/>
+            <enum name="BdEmpty" value="1"/>
+            <enum name="BdLoading" value="2"/>
+            <enum name="BdHiden" value="3"/>
+        </attr>
+    </declare-styleable>
+    <string name="app_name">core</string>
+    <string formatted="false" name="srl_component_falsify">%s falsify area,\n Represents the height[%.1fdp] of drag at run time,\n It does not show anything.</string>
+    <string name="srl_content_empty">The content view in SmartRefreshLayout is empty. Do you forget to add it in xml layout file?</string>
+    <string name="srl_footer_failed">Load Failed</string>
+    <string name="srl_footer_finish">Load Success</string>
+    <string name="srl_footer_loading">Loading…</string>
+    <string name="srl_footer_nothing">No More Data</string>
+    <string name="srl_footer_pulling">Pull Up To Load More</string>
+    <string name="srl_footer_refreshing">Wait For Refreshing…</string>
+    <string name="srl_footer_release">Release To Load More</string>
+    <string name="srl_header_failed">Refresh Failed</string>
+    <string name="srl_header_finish">Refresh Success</string>
+    <string name="srl_header_loading">Loading…</string>
+    <string name="srl_header_pulling">Pull Down To Refresh</string>
+    <string name="srl_header_refreshing">Wait For Loading…</string>
+    <string name="srl_header_release">Release To Refresh</string>
+    <string name="srl_header_secondary">Release To Second Floor</string>
+    <string name="srl_header_update">\'Last Update\' M-d HH:mm</string>
+    <style name="AnimBottom" parent="@android:style/Animation">
+        <item name="android:windowEnterAnimation">@anim/push_bottom_in</item>
+        <item name="android:windowExitAnimation">@anim/push_bottom_out</item>
+    </style>
+    <style name="BottomDialog" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:windowIsFloating">true</item>
+    </style>
+    <style name="Custom_Progress" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+</resources>

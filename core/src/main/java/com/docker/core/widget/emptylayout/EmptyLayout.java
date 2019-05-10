@@ -6,6 +6,7 @@ import android.databinding.BindingAdapter;
 import android.databinding.DataBindingUtil;
 import android.databinding.InverseBindingAdapter;
 import android.databinding.InverseBindingListener;
+import android.graphics.Color;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.AttributeSet;
@@ -136,6 +137,7 @@ public class EmptyLayout extends LinearLayout {
     }
 
     public void hide() {
+        this.setBackgroundColor(Color.TRANSPARENT);
         for (int i = 0; i < this.getChildCount(); i++) {
             if (this.getChildAt(i) == mbinding.commonEmptyCoutainer) {
                 this.getChildAt(i).setVisibility(GONE);
