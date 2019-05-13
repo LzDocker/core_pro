@@ -55,7 +55,8 @@ public abstract class HivsBaseActivity<VM extends HivsBaseViewModel, VB extends 
 
     public void hidWaitDialog() {
         if (waitDialog != null) {
-            waitDialog.hide();
+//            waitDialog.hide();
+            waitDialog.dismiss();
         }
     }
 

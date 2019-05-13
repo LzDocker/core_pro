@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+                                                                   
+
+                 
+
+    <LinearLayout
+        android:id="@+id/common_empty_coutainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical" android:tag="layout/empty_layout_0" xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <LinearLayout
+            android:id="@+id/common_loading_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/common_iv_loading"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/empty_icon" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    style="?android:attr/progressBarStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:indeterminateDrawable="@drawable/shape_progressbar" />
+
+                <TextView
+                    android:id="@+id/common_tv_loading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="20dp"
+                    android:text="正在加载中..."
+                    android:textColor="#333"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/common_empty_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="30dp"
+            android:visibility="gone"
+            >
+
+            <ImageView
+                android:id="@+id/common_iv_nodata"
+                android:layout_width="120dp"
+                android:layout_height="125dp"
+                android:layout_gravity="center_horizontal"
+                android:scaleType="centerCrop"
+                android:src="@drawable/icon_empty_y" />
+
+            <TextView
+                android:id="@+id/common_tv_nodata"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:text="暂无数据"
+                android:textColor="#999" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/common_err_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:orientation="vertical"
+            android:visibility="gone"
+            >
+
+            <ImageView
+                android:id="@+id/common_iv_error"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/icon_error_r" />
+
+            <TextView
+                android:id="@+id/common_tv_error"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:textSize="12sp"
+                android:background="@drawable/common_bg_blue"
+                android:padding="8dp"
+                android:text="网络问题，请点击重试"
+                android:textColor="#333" />
+        </LinearLayout>
+    </LinearLayout>
+         

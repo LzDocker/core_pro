@@ -1,0 +1,48 @@
+{
+    "logs": [
+        {
+            "outputFile": "/Users/zhangxindang/bf_workspace/corepro/core/build/intermediates/res/merged/debug/values-zh/values-zh.xml",
+            "map": [
+                {
+                    "source": "/Users/zhangxindang/bf_workspace/corepro/core/src/main/res/values-zh/strings.xml",
+                    "from": {
+                        "startLines": "19,18,15,14,12,16,10,13,11,6,5,3,1,2,4,8,7",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "928,836,729,678,565,780,457,618,511,288,237,126,16,70,183,400,339",
+                        "endColumns": "107,91,50,50,52,54,53,59,53,50,50,56,53,55,53,55,60",
+                        "endOffsets": "1031,923,775,724,613,830,506,673,560,334,283,178,65,121,232,451,395"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,163,255,306,357,410,465,519,579,633,684,735,792,846,902,956,1012",
+                        "endColumns": "107,91,50,50,52,54,53,59,53,50,50,56,53,55,53,55,60",
+                        "endOffsets": "158,250,301,352,405,460,514,574,628,679,730,787,841,897,951,1007,1068"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "/Users/zhangxindang/bf_workspace/corepro/core/build/intermediates/incremental/mergeDebugResources/merged.dir/values-zh/values-zh.xml",
+            "map": [
+                {
+                    "source": "/Users/zhangxindang/bf_workspace/corepro/core/src/main/res/values-zh/strings.xml",
+                    "from": {
+                        "startLines": "19,18,15,14,12,16,10,13,11,6,5,3,1,2,4,8,7",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "928,836,729,678,565,780,457,618,511,288,237,126,16,70,183,400,339",
+                        "endColumns": "107,91,50,50,52,54,53,59,53,50,50,56,53,55,53,55,60",
+                        "endOffsets": "1031,923,775,724,613,830,506,673,560,334,283,178,65,121,232,451,395"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,163,255,306,357,410,465,519,579,633,684,735,792,846,902,956,1012",
+                        "endColumns": "107,91,50,50,52,54,53,59,53,50,50,56,53,55,53,55,60",
+                        "endOffsets": "158,250,301,352,405,460,514,574,628,679,730,787,841,897,951,1007,1068"
+                    }
+                }
+            ]
+        }
+    ]
+}

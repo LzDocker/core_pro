@@ -74,6 +74,7 @@ public class AccountViewModel extends HivsBaseViewModel {
     public LiveData<Resource<LoginVo>> register(RegisterVo registerVo) {
         registerParm.setValue(registerVo);
         showDialogWait("11111", true);
+
         return registVo;
 
     }

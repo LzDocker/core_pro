@@ -31,6 +31,7 @@ public class SimpleViewModel extends HivsBaseViewModel {
         mVmEventSouce.setValue(new ViewEventResouce(1, "11222111", 1333));
 
         showDialogWait("11111",true);
+        hideDialogWait();
     }
 
 
