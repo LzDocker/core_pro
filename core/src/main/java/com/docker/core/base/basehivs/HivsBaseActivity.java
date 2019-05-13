@@ -25,6 +25,7 @@ public abstract class HivsBaseActivity<VM extends HivsBaseViewModel, VB extends 
 
     @Inject
     Empty empty;
+
     public void initBasicListener() {
         mViewModel.mResourceLiveData.observe(this, o -> {
         });
@@ -46,7 +47,9 @@ public abstract class HivsBaseActivity<VM extends HivsBaseViewModel, VB extends 
     }
 
     public void showWaitDialog(String message, boolean cancleable) {
-        waitDialog = new WaitDialog(this);
+        if (waitDialog == null) {
+            waitDialog = new WaitDialog(this);
+        }
         waitDialog.show(this, message, cancleable, null);
     }
 

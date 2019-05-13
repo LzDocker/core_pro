@@ -40,7 +40,9 @@ public abstract class HivsBaseFragment<VM extends HivsBaseViewModel, VB extends 
     }
 
     public void showWaitDialog(String message, boolean cancleable) {
-        waitDialog = new WaitDialog(getHoldingActivity());
+        if (waitDialog == null) {
+            waitDialog = new WaitDialog(getHoldingActivity());
+        }
         waitDialog.show(getHoldingActivity(), message, cancleable, null);
     }
 
