@@ -45,7 +45,7 @@ public abstract class HivsBaseFragment<VM extends HivsBaseViewModel, VB extends 
     }
 
     public void hidWaitDialog() {
-        if (getHoldingActivity() != null && waitDialog != null && waitDialog.isShowing()) {
+        if (getHoldingActivity() != null && waitDialog != null) {
             waitDialog.hide();
         }
     }
