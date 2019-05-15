@@ -20,6 +20,7 @@ public class SimpleViewModel extends HivsBaseViewModel {
 
 
     public void getData() {
+        showDialogWait("11111",true);
         mEmptycommand.set(EmptyStatus.BdHiden);
     }
 
@@ -30,7 +31,7 @@ public class SimpleViewModel extends HivsBaseViewModel {
         mEnableLoadmore.set(true);
         mVmEventSouce.setValue(new ViewEventResouce(1, "11222111", 1333));
 
-        showDialogWait("11111",true);
+
         hideDialogWait();
     }
 

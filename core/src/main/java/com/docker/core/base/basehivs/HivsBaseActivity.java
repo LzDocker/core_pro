@@ -7,14 +7,14 @@ import android.support.annotation.Nullable;
 import com.docker.core.base.BaseActivity;
 import com.docker.core.util.Empty;
 import com.docker.core.util.ViewEventResouce;
-import com.docker.core.widget.dialog.WaitDialog;
+import com.docker.core.widget.dialog.DialogWait;
 import com.gyf.barlibrary.ImmersionBar;
 
 import javax.inject.Inject;
 
 public abstract class HivsBaseActivity<VM extends HivsBaseViewModel, VB extends ViewDataBinding> extends BaseActivity<VM, VB> {
 
-    public WaitDialog waitDialog;
+    public DialogWait dialogWait;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceStates) {
@@ -32,7 +32,7 @@ public abstract class HivsBaseActivity<VM extends HivsBaseViewModel, VB extends 
         mViewModel.mVmEventSouce.observe(this, viewEventResouce -> {
             switch (viewEventResouce.eventType) {
                 case 101:
-                    showWaitDialog(viewEventResouce.message, (Boolean) viewEventResouce.data);
+                    showWaitDialog(viewEventResouce.message);
                     break;
                 case 102:
                     hidWaitDialog();
@@ -46,17 +46,17 @@ public abstract class HivsBaseActivity<VM extends HivsBaseViewModel, VB extends 
 
     }
 
-    public void showWaitDialog(String message, boolean cancleable) {
-        if (waitDialog == null) {
-            waitDialog = new WaitDialog(this);
+    public void showWaitDialog(String message) {
+        if (dialogWait == null) {
+            dialogWait = new DialogWait(this);
         }
-        waitDialog.show(this, message, cancleable, null);
+        dialogWait.setMessage(message);
+        dialogWait.show();
     }
 
     public void hidWaitDialog() {
-        if (waitDialog != null) {
-//            waitDialog.hide();
-            waitDialog.dismiss();
+        if (dialogWait != null) {
+            dialogWait.dismiss();
         }
     }
 

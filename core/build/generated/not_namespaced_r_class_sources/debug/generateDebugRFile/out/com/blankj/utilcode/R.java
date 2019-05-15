@@ -13,7 +13,7 @@ public final class R {
         private style() {}
 
         public static int ActivityTranslucent = 0x7f160001;
-        public static int DialogTransparent = 0x7f1600cf;
+        public static int DialogTransparent = 0x7f1600d0;
     }
     public static final class xml {
         private xml() {}

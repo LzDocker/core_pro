@@ -45,11 +45,16 @@ public class CommonRepository {
         }.asLiveData();
     }
 
-    public <T> MediatorLiveData<Resource<T>> SpecialFeatch(LiveData<ApiResponse<BaseResponse<T>>> servicefun) {
+    public <T> MediatorLiveData<Resource<T>> SpecialFeatch(LiveData<ApiResponse<T>> servicefun) {
         return new NetworkBoundResourceAuto<T>(0) {
             @NonNull
             @Override
             protected LiveData<ApiResponse<BaseResponse<T>>> createCall() {
+                return null;
+            }
+            @NonNull
+            @Override
+            protected LiveData<ApiResponse<T>>createSpecCall() {
                 return servicefun;
             }
         }.asLiveData();

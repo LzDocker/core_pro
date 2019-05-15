@@ -97,8 +97,15 @@ public class AccountActivity extends HivsBaseActivity<AccountViewModel, Activity
 
     public void click(View view) {
 
-        Intent intent = new Intent(AccountActivity.this, SimpleActivity.class);
-        startActivity(intent);
+        RegisterVo registerVo =  new RegisterVo();
+        registerVo.setPassword("12345678");
+        registerVo.setRepassword("12345678");
+        registerVo.setUsername("123454321");
+
+       mViewModel.registerqq(registerVo);
+//        Intent intent = new Intent(AccountActivity.this, SimpleActivity.class);
+//        startActivity(intent);
+
 //        testpickImage();
 //        initUpdate();
 //        bottomSheetDialog bottomSheetDialog = new bottomSheetDialog();

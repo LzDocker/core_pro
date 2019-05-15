@@ -7,6 +7,7 @@ import android.util.SparseArray;
 import android.util.SparseIntArray;
 import android.view.View;
 import com.docker.core.databinding.DialogFragmentChooseLayoutBindingImpl;
+import com.docker.core.databinding.DialogWaitingBindingImpl;
 import com.docker.core.databinding.EmptyLayoutBindingImpl;
 import com.docker.core.databinding.ItemChooseOptionsBindingImpl;
 import java.lang.IllegalArgumentException;
@@ -22,14 +23,17 @@ import java.util.List;
 public class DataBinderMapperImpl extends DataBinderMapper {
   private static final int LAYOUT_DIALOGFRAGMENTCHOOSELAYOUT = 1;
 
-  private static final int LAYOUT_EMPTYLAYOUT = 2;
+  private static final int LAYOUT_DIALOGWAITING = 2;
 
-  private static final int LAYOUT_ITEMCHOOSEOPTIONS = 3;
+  private static final int LAYOUT_EMPTYLAYOUT = 3;
 
-  private static final SparseIntArray INTERNAL_LAYOUT_ID_LOOKUP = new SparseIntArray(3);
+  private static final int LAYOUT_ITEMCHOOSEOPTIONS = 4;
+
+  private static final SparseIntArray INTERNAL_LAYOUT_ID_LOOKUP = new SparseIntArray(4);
 
   static {
     INTERNAL_LAYOUT_ID_LOOKUP.put(com.docker.core.R.layout.dialog_fragment_choose_layout, LAYOUT_DIALOGFRAGMENTCHOOSELAYOUT);
+    INTERNAL_LAYOUT_ID_LOOKUP.put(com.docker.core.R.layout.dialog_waiting, LAYOUT_DIALOGWAITING);
     INTERNAL_LAYOUT_ID_LOOKUP.put(com.docker.core.R.layout.empty_layout, LAYOUT_EMPTYLAYOUT);
     INTERNAL_LAYOUT_ID_LOOKUP.put(com.docker.core.R.layout.item_choose_options, LAYOUT_ITEMCHOOSEOPTIONS);
   }
@@ -48,6 +52,12 @@ public class DataBinderMapperImpl extends DataBinderMapper {
             return new DialogFragmentChooseLayoutBindingImpl(component, view);
           }
           throw new IllegalArgumentException("The tag for dialog_fragment_choose_layout is invalid. Received: " + tag);
+        }
+        case  LAYOUT_DIALOGWAITING: {
+          if ("layout/dialog_waiting_0".equals(tag)) {
+            return new DialogWaitingBindingImpl(component, view);
+          }
+          throw new IllegalArgumentException("The tag for dialog_waiting is invalid. Received: " + tag);
         }
         case  LAYOUT_EMPTYLAYOUT: {
           if ("layout/empty_layout_0".equals(tag)) {
@@ -106,19 +116,21 @@ public class DataBinderMapperImpl extends DataBinderMapper {
   }
 
   private static class InnerBrLookup {
-    static final SparseArray<String> sKeys = new SparseArray<String>(3);
+    static final SparseArray<String> sKeys = new SparseArray<String>(4);
 
     static {
       sKeys.put(0, "_all");
       sKeys.put(1, "item");
+      sKeys.put(2, "message");
     }
   }
 
   private static class InnerLayoutIdLookup {
-    static final HashMap<String, Integer> sKeys = new HashMap<String, Integer>(3);
+    static final HashMap<String, Integer> sKeys = new HashMap<String, Integer>(4);
 
     static {
       sKeys.put("layout/dialog_fragment_choose_layout_0", com.docker.core.R.layout.dialog_fragment_choose_layout);
+      sKeys.put("layout/dialog_waiting_0", com.docker.core.R.layout.dialog_waiting);
       sKeys.put("layout/empty_layout_0", com.docker.core.R.layout.empty_layout);
       sKeys.put("layout/item_choose_options_0", com.docker.core.R.layout.item_choose_options);
     }

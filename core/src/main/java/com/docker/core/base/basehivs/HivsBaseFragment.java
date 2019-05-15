@@ -5,13 +5,12 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.docker.core.base.BaseFragment;
-import com.docker.core.base.BaseViewModel;
 import com.docker.core.util.ViewEventResouce;
-import com.docker.core.widget.dialog.WaitDialog;
+import com.docker.core.widget.dialog.DialogWait;
 
 public abstract class HivsBaseFragment<VM extends HivsBaseViewModel, VB extends ViewDataBinding> extends BaseFragment<VM, VB> {
 
-    public WaitDialog waitDialog;
+    public DialogWait dialogWait;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceStates) {
@@ -25,7 +24,7 @@ public abstract class HivsBaseFragment<VM extends HivsBaseViewModel, VB extends 
         mViewModel.mVmEventSouce.observe(this, viewEventResouce -> {
             switch (viewEventResouce.eventType) {
                 case 101:
-                    showWaitDialog(viewEventResouce.message, (Boolean) viewEventResouce.data);
+                    showWaitDialog(viewEventResouce.message);
                     break;
                 case 102:
                     hidWaitDialog();
@@ -39,16 +38,17 @@ public abstract class HivsBaseFragment<VM extends HivsBaseViewModel, VB extends 
 
     }
 
-    public void showWaitDialog(String message, boolean cancleable) {
-        if (waitDialog == null) {
-            waitDialog = new WaitDialog(getHoldingActivity());
+    public void showWaitDialog(String message) {
+        if (dialogWait == null) {
+            dialogWait = new DialogWait(getHoldingActivity());
         }
-        waitDialog.show(getHoldingActivity(), message, cancleable, null);
+        dialogWait.setMessage(message);
+        dialogWait.show();
     }
 
     public void hidWaitDialog() {
-        if (getHoldingActivity() != null && waitDialog != null) {
-            waitDialog.dismiss();
+        if (getHoldingActivity() != null && dialogWait != null) {
+            dialogWait.dismiss();
         }
     }
 
