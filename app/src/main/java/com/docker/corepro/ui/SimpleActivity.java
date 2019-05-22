@@ -58,6 +58,10 @@ public class SimpleActivity extends HivsBaseActivity<SimpleViewModel, ActivitySi
                 .fullScreen(true)
                 .addTag("PicAndColor")
                 .init();
+
+
+
+
     }
 
     public void initView(){
