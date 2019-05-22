@@ -24,6 +24,8 @@ android {
             resources.srcDirs = ['src/main/resources', 'src/main/resources/']
             jniLibs.srcDirs = ['libs']
         }
+
+    //test mark
     }
     buildTypes {
         release {
