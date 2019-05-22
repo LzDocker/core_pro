@@ -1,6 +1,9 @@
 apply plugin: 'com.android.library'
-apply plugin: 'maven'
+//apply plugin: 'maven'
 
+apply plugin: 'maven'
+apply plugin: 'com.github.dcendents.android-maven'
+group = 'com.github.<LzDocker>'
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
     buildToolsVersion rootProject.ext.android.buildToolsVersion
@@ -45,23 +48,23 @@ dependencies {
 //    api project(":ucrop")
     api 'com.docker.ucrop:ucrop:1.2.3'
 }
-uploadArchives {
-    configuration = configurations.archives
-    repositories{
-        mavenDeployer{
-            repository(url: 'http://127.0.0.1:8081/repository/picturelibary/') {
-                //你Nexus的账户密码
-                authentication(userName: 'admin', password: 'admin123')
-            }
-            pom.project {
-                version '1.2.3'
-                artifactId 'picturelibary'
-                groupId 'com.docker.picturelibary'
-                packaging 'aar'
-                description '图片选择框架'
-            }
-        }
-    }
-
-}
+//uploadArchives {
+//    configuration = configurations.archives
+//    repositories{
+//        mavenDeployer{
+//            repository(url: 'http://127.0.0.1:8081/repository/picturelibary/') {
+//                //你Nexus的账户密码
+//                authentication(userName: 'admin', password: 'admin123')
+//            }
+//            pom.project {
+//                version '1.2.3'
+//                artifactId 'picturelibary'
+//                groupId 'com.docker.picturelibary'
+//                packaging 'aar'
+//                description '图片选择框架'
+//            }
+//        }
+//    }
+//
+//}
 

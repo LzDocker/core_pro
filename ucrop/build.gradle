@@ -1,5 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'maven'
+apply plugin: 'com.github.dcendents.android-maven'
+group = 'com.github.<LzDocker>'
 
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
@@ -46,22 +48,22 @@ dependencies {
     api rootProject.ext.dependencies["glide"]
     annotationProcessor rootProject.ext.dependencies["glide-compiler"]
 }
-uploadArchives {
-    configuration = configurations.archives
-    repositories{
-        mavenDeployer{
-            repository(url: 'http://127.0.0.1:8081/repository/ucrop/') {
-                //你Nexus的账户密码
-                authentication(userName: 'admin', password: 'admin123')
-            }
-            pom.project {
-                version '1.2.3'
-                artifactId 'ucrop'
-                groupId 'com.docker.ucrop'
-                packaging 'aar'
-                description 'ucrop'
-            }
-        }
-    }
-
-}
+//uploadArchives {
+//    configuration = configurations.archives
+//    repositories{
+//        mavenDeployer{
+//            repository(url: 'http://127.0.0.1:8081/repository/ucrop/') {
+//                //你Nexus的账户密码
+//                authentication(userName: 'admin', password: 'admin123')
+//            }
+//            pom.project {
+//                version '1.2.3'
+//                artifactId 'ucrop'
+//                groupId 'com.docker.ucrop'
+//                packaging 'aar'
+//                description 'ucrop'
+//            }
+//        }
+//    }
+//
+//}
